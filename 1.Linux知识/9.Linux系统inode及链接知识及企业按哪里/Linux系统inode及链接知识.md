@@ -1,0 +1,329 @@
+文件核心 属性知识
+
+1.什么是索引节点（inode）。
+中文意思是索引节点(index node)
+是磁盘上的一块【存储空间】。
+一个inode大小256字节。
+看到形态是一个串数字（身份证）。
+
+2.索引节点作用
+存储文件的属性信息(大小、用户、组、修改时间 ls -l的信息都在里面放着)。
+还存放一个重要的东西，指向文件真正实体的位置信息（指针）。
+
+3.inode是怎么产生的？
+1）买回来磁盘，要使用的4个步骤。
+  （1）分区（打隔断），c,d,e/ sda1/sda2
+  （2）格式化（装修），创建文件系统。
+  什么是文件系统？组织和存储数据的一种机制。（装修风格）
+  （3）挂载（搞个门搞个窗户）
+  （4）使用（拎包入住）。
+2）inode是在磁盘格式化，创建[文件系统]的时候产生的。
+Linux文件系统ext4,xfs，windows文件系统,ntfs,fat32
+创建[文件系统]的时候就会生成inode和block.
+inode和block都是磁盘空间的组成。
+
+数据分为两种形式：
+1）AV实体称之为真正数据。
+2）AV属性信息（40G），美国生产。元数据：数据的数据信息。
+找女生，先要获取元数据，然后在需要数据。
+
+元数据就要放在inode里。
+真正数据就放在block里。
+
+4.inode的特点？
+1）是文件的唯一标识（身份证）。
+2）大小256字节。
+3）存放文件属性信息及指向文件所在位置信息。
+4）创建文件的时候就分配inode。
+5）一个文件有且只有一个inode（分区或磁盘内）。
+6）多个文件有相同的inode，是同一个文件的不同文件名。
+   这样的文件被称为硬链接文件。
+
+5.Linux系统读取文件的原理
+
+![image-20240217033920047](assets/Linux系统inode及链接知识/image-20240217033920047.png)
+
+![image-20240217034139425](assets/Linux系统inode及链接知识/image-20240217034139425.png)
+
+创建文件。/oldboy.log
+1.文件名放到/下block里。
+2.分配inode（256字节），放文件属性。
+3.分配block，放文件内容（多个block）。
+
+6.企业生产案例：No space left on device问题企业案例
+
+No space left on device
+没有 空间 剩余  在设备上
+
+windows通常是block满了。
+磁盘满有两种情况。
+1.inode满了。
+2.block满了。
+任意之一不够用空间就会提示No space left on device
+
+一个AV40G，属性占一个inode，100万个block（单个block4K）。
+磁盘存储的都是大文件这个时候一定block不够用。
+磁盘存储的都是小文件(低于block大小的文件)这个时候一定inode不够用。
+0.1K
+
+分区在格式化的时候inode多，还是block多？为什么？
+解答：block多
+工作中磁盘里的文件大部分都是大于4K，所以格式化时候，系统自动安排适合业务场景的分配模式。
+一个文件至少是一个inode，消耗inode是基本就是一对一。消耗block是1对多
+
+[root@oldboy ~]# mkfs.ext4 /dev/sdc                            #<==格式化。
+mke2fs 1.42.9 (28-Dec-2013)
+/dev/sdc is not a block special device.
+Discarding device blocks: 完成                            
+文件系统标签=
+OS type: Linux
+块大小=1024 (log=0)
+分块大小=1024 (log=0)
+
+Stride=0 blocks, Stripe width=0 blocks
+
+104 inodes, 800 blocks 
+
+
+
+
+
+block介绍
+1）存放文件实体内容的空间。
+2）默认大小1,2,4K。
+3）一个block只能被一个文件占有，不能放两个文件。
+   如果文件大小0.1K,也会占一个block。剩余3.9K浪费了。
+4）block是文件系统存储大小的基本单位。
+   如果文件较大，block就是大点好，读数据是按block读取，block是4K，一次读4K。
+   如果文件小，
+   分布式文件系统，block可能到64K
+
+Block的特点如下：
+磁盘读取数据是按Block为单位读取的。
+每读取一个Block就会消耗一次磁盘I/O（input/output 磁盘读写）。
+若文件比较大，一个文件可能占用多个Block。
+若文件比较小，一个Block剩余空间会被浪费，无论内容有多小。
+
+和磁盘block，inode有关的命令
+1）查看文件inode
+[root@oldboy ~]# ls -li
+总用量 29724
+33583628 -rw-r--r--. 1 root root      184 5月  12 2021 ab.txt
+
+2)查看磁盘和分区的inode
+[root@oldboy ~]# df -i
+文件系统                  Inode 已用(I) 可用(I) 已用(I)% 挂载点
+devtmpfs                 500271     337  499934       1% /dev
+tmpfs                    503267       1  503266       1% /dev/shm
+tmpfs                    503267    1217  502050       1% /run
+tmpfs                    503267      16  503251       1% /sys/fs/cgroup
+/dev/mapper/centos-root 8910848   67454 8843394       1% /
+/dev/sda1                524288     326  523962       1% /boot
+tmpfs                    503267       1  503266       1% /run/user/0
+
+3)查看磁盘和分区的大小（block）
+[root@oldboy ~]# df -h
+文件系统                 容量  已用  可用 已用% 挂载点
+devtmpfs                 2.0G     0  2.0G    0% /dev
+tmpfs                    2.0G     0  2.0G    0% /dev/shm
+tmpfs                    2.0G  100M  1.9G    6% /run
+tmpfs                    2.0G     0  2.0G    0% /sys/fs/cgroup
+/dev/mapper/centos-root   17G  2.1G   15G   13% /
+/dev/sda1               1014M  138M  877M   14% /boot
+tmpfs                    394M     0  394M    0% /run/user/0
+
+企业生产案例：No space left on device问题企业案例
+df -h没有满啊？为什么？
+
+实践：
+环境准备，命令集合如下：
+mkdir -p /app/logs                            #<==创建用于挂载的目录。
+dd if=/dev/zero of=/dev/sdc bs=8K  count=100  #<==创建指定大小的文件。
+mkfs.ext4 /dev/sdc                            #<==格式化。
+mount -o loop /dev/sdc /app/logs              #<==挂载。
+
+df -h                                         #<==检查挂载结果。
+
+block满了。
+[root@oldboy ~]# \cp /etc/services /mnt/asdasdf -a
+cp: 写入"/mnt/asdasdf" 出错: 设备上没有空间
+[root@oldboy mnt]# touch oldboy{1..94}
+touch: 无法创建"oldboy93": 设备上没有空间
+touch: 无法创建"oldboy94": 设备上没有空间
+[root@oldboy mnt]# df -i
+文件系统                  Inode 已用(I) 可用(I) 已用(I)% 挂载点
+devtmpfs                 500271     342  499929       1% /dev
+tmpfs                    503267       1  503266       1% /dev/shm
+tmpfs                    503267    1224  502043       1% /run
+tmpfs                    503267      16  503251       1% /sys/fs/cgroup
+/dev/mapper/centos-root 8910848   67457 8843391       1% /
+/dev/sda1                524288     326  523962       1% /boot
+tmpfs                    503267       1  503266       1% /run/user/0
+/dev/loop0                  104     103       1     100% /mnt
+[root@oldboy mnt]# df -h
+文件系统                 容量  已用  可用 已用% 挂载点
+devtmpfs                 2.0G  788K  2.0G    1% /dev
+tmpfs                    2.0G     0  2.0G    0% /dev/shm
+tmpfs                    2.0G  100M  1.9G    6% /run
+tmpfs                    2.0G     0  2.0G    0% /sys/fs/cgroup
+/dev/mapper/centos-root   17G  2.1G   15G   13% /
+/dev/sda1               1014M  138M  877M   14% /boot
+tmpfs                    394M     0  394M    0% /run/us
+
+什么情况会导致inode满？
+1）小文件特别多的时候。
+2）多数情况下是基于日常Linux定时任务crond配置不当导致的。
+
+链接;
+1.链接可分为两种：一种为硬链接（Hard Link），另一种为软链接（Soft link）。
+2.命令是ln
+	如果使用ln -s创建链接则为软链接，软链接文件的文件类型为l（字母L）。
+	创建硬链接语法：“ln 原始文件 目标文件”（注意空格）。
+	创建软链接语法：“ln -s 原始文件 目标文件”（目标文件不能事先存在）。
+
+1.什么是硬链接？
+1）具有【相同索引节点号】的文件，互相称之为硬链接文件。
+2）具有【相同索引节点号】的文件，指向同一个文件实体。
+
+2.硬链接文件作用
+用于备份，防止误删文件。
+
+3.找一找互为硬链接的文件。
+.  和当前目录互为硬链接文件，点和当前目录是一个目录？可以
+.. 和上一级目录互为硬链接文件。
+特征：索引节点相同。
+实践：
+[root@oldboy mnt]# cd ~
+[root@oldboy ~]# pwd
+/root
+[root@oldboy ~]# cd .
+[root@oldboy ~]# cd ~
+[root@oldboy ~]# cd ./
+[root@oldboy ~]# cd /root
+[root@oldboy ~]# ls -lid . ~ ./ /root
+33574977 dr-xr-x---. 5 root root 4096 5月  13 2021 .
+33574977 dr-xr-x---. 5 root root 4096 5月  13 2021 ./
+33574977 dr-xr-x---. 5 root root 4096 5月  13 2021 /root
+33574977 dr-xr-x---. 5 root root 4096 5月  13 2021 /root
+[root@oldboy ~]# ls -lid .. /
+64 dr-xr-xr-x. 21 root root 4096 5月  17 23:23 /
+64 dr-xr-xr-x. 21 root root 4096 5月  17 23:23 ..
+
+问题:上面21数字代表/的硬链接数，请找出上面21数字的所有硬链接。
+1）所有/下子目录下的..都是。
+2）当下目录的 .
+3）自身 /
+
+mkdir /oldboy -p
+touch /oldboy/oldboyfile  #源文件
+cd /oldboy
+ln oldboyfile  oldboyfile_hard_link
+ls -li
+ln oldboyfile  oldboyfile_hard_link1
+
+结论：
+1.只要有一个硬连接数，数据就不会丢。
+2.把全部的硬链接删除，数据就丢失了。
+
+[root@oldboy oldboy]# ln oldboyfile_hard_link oldboyfile
+[root@oldboy oldboy]# cat oldboyfile
+i am oldboy
+
+![image-20240217042156183](assets/Linux系统inode及链接知识/image-20240217042156183.png)
+
+硬链接知识小结：
+1）具有相同Inode节点号的多个文件互为硬链接文件，本质是相同文件不同文件名。
+2）删除硬链接文件或者删除源文件任意之一，文件实体并未被删除。
+只有删除了源文件及所有对应的硬链接文件，文件实体才会被删除。
+
+3）待所有的硬链接文件及源文件被删除后，
+  a.存放新的数据会占用这个文件的空间，
+  b.磁盘fsck检查（定时或人工）的时候，删除的数据也会被系统回收
+（养成删除及使用多套环境测试的好习惯）。
+
+
+4）硬链接文件就是文件的另一个入口（相当于超市的前门、后门）。
+
+5）可以通过给文件设置硬链接文件，来防止重要文件被误删。
+
+6）通过执行命令“ln 源文件 硬链接文件”，即可完成创建硬链接。
+
+7)硬链接文件是普通文件，因此可以用rm命令删除。
+
+8)创硬链接只能针对文件，不能针对目录。
+
+软链接：
+1.什么是软链接？
+软链接就是快捷方式，指向源文件的位置。
+
+2.为什么需要软链接？作用
+ 1）复杂的路径简单化。
+[root@oldboy oldboy]# ln -s /etc/sysconfig/network-scripts/ifcfg-eth0 ~/oldboy
+ 2）企业作用：编译安装的软件升级时候
+	nginx web服务
+	安装目录：/application/nginx-1.19.1
+	使用方面：/application/nginx  #简单方便，程序软件配置的都是这个。
+	升级版本：/application/nginx-1.20.2 #正式使用。。
+	升级操作：
+	rm -f /application/nginx
+	ln -s /application/nginx-1.20.2 /application/nginx
+
+3.软链接原理图
+
+![image-20240217043355842](assets/Linux系统inode及链接知识/image-20240217043355842.png)
+
+4.软链接知识小结
+1）软链接类似Windows的快捷方式（可以通过readlink查看其指向）。
+
+2）软链接类似一个文本文件，里面存放的是源文件的路径，指向源文件实体。
+
+3）删除源文件，软链接文件依然存在，但是无法访问指向源文件路径内容了。
+链接失效的时候一般是白字红底闪烁提示。
+
+4）执行命令“ln -s 源文件 软链接文件”，即可完成创建软链接（目标不能存在）。
+
+5）软链接和源文件是不同类型的文件，也是不同的文件，Inode号也不相同。
+6）软链接文件的文件类型为字母(l)，可以用rm命令删除。
+7）软链接文件不仅可以针对文件，更可以针对目录（企业中常用）。
+
+9.6.4企业面试：请描述Linux中软链接和硬链接的区别
+1）答分类：在Linux系统中，链接分两种 ：一种被称为硬链接（Hard Link），另一种被称为符号链接或软链接（Symbolic Link）。
+2）答概念：硬链接文件与源文件的Inode节点号相同，而软链接文件相当于Windows下面的快捷方式（Inode节点号与源文件不同）
+3）答创建：默认不带参数情况下，ln命令创建的是硬链接，带-s参数的ln命令创建的是软链接，创建命令示例。。
+4）答特点：
+a)不能对目录创建硬链接，但可以创建软链接，对目录的软链接会经常被用到。
+b)软链接可以跨文件系统，硬链接不可以跨文件系统。
+c)删除软链接文件,对源文件及硬链接文件无任何影响。
+d)删除文件的硬链接文件，对源文件及软链接文件无任何影响。
+e)删除链接文件的源文件，对硬链接文件无影响，会导致其软链接失效（红底白字闪烁状）。
+f)同时删除源文件及其硬链接文件，整个文件才会被"真正"的删除。
+5）答案例：硬链接用处不多，可以用来对重要文件做快照防止误删，对目录建立软链接在工作中很常用，例如：安装软件会用nginx-1.10作为目录，安装完后设置软链接为nginx，即保持了版本号标识，又方便使用，以及后续软件升级。
+
+9.6.5 Linux系统文件删除原理
+
+1）静态文件
+：i_link=0，解释硬链接数为0，所有的硬链接都删除文件就被删除了。
+2）动态文件
+i_count=0, 进程引用计数为0，没有被进程调用（使用）的文件。
+
+3）原理见图
+真实企业级磁盘满故障的案例仅给出地址，读者可以打开地址观看。 
+Web服务器磁盘满故障深入解析，地址为http://oldboy.blog.51cto.com/2561410/612351
+
+![image-20240217044723797](assets/Linux系统inode及链接知识/image-20240217044723797.png)
+
+今日作业：
+1）复习并表达如下题目：
+	95.inode和block相关知识和特点
+	96.Linux系统【读文件的原理】
+	97.企业生产案例：磁盘满故障案例 
+	Web服务器磁盘满故障深入解析，
+	http://oldboy.blog.51cto.com/2561410/612351
+	98.企业面试：Linux系统文件删除原理。
+	99.企业面试：请描述Linux中软链接和硬链接的区别
+	100.企业生产案例：No space left on device问题企业案例
+
+
+
+
+

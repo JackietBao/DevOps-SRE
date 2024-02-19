@@ -1,0 +1,123 @@
+
+
+1.什么是快照？
+快照的目的，出故障快速还原，做多个快照。
+树形结构。
+什么时候做快照，在做影响系统的关键操作时，
+包括删除文件，重装软件，更改核心配置。
+
+2.克隆
+克隆羊
+1）链接克隆 很少的更改。性能差一些，占用空间小，克隆速度快，依赖原始镜像。
+2）完全克隆，复制。占用空间大，克隆速度慢，不依赖原始镜像。
+
+
+3.vmware网络知识
+
+
+
+
+
+IP地址：互利网上找到计算机的唯一地址（家庭住址）
+IP地址：10.0.0.200/24   10.0.0.1-10.0.0.254    254个地址 计算机 一个局域网
+IP地址：10.0.0.200/16   10.0.0.1-10.0.0.254    254*254个地址 一个局域网计算机
+10.0.0.1-10.0.0.254
+10.0.1.1-10.0.1.254
+10.0.2.1-10.0.2.254
+分为：网络位+主机位
+子网掩码，作用是调整网络位和主机位。一个网络内主机的数量，由子网掩码控制的
+255.255.255.0   变成24
+          11111111.11111111.11111111.0
+1 1 1 1 1 1 1 1 =255
+ 128+64+32+16+8+4+2+1=255
+255.255.0.0   变成16
+255.255.240.0 变成 20
+128 64 32 16=240
+11111111.11111111.11110000
+
+Gateway：网关  网络出口
+
+
+
+网卡配置IP
+ip：10.0.0.200
+mask:255.255.255.0
+gw: 10.0.0.254    两边的地址做网关。
+DNS1：223.5.5.5
+DNS2: 8.8.8.8
+domain name system  将ip地址转成网址的形式（www.oldboyedu.com）
+
+DNS服务，域名解析：
+203.81.19.100   www.oldboyedu.com
+
+
+IP地址 唯一的标识一台计算机
+端口 1）数字形式  2）标识一台计算机上对应的服务。
+0-65535.
+默认端口代表的服务
+远程连接 22 SSH服务 加密的 安全
+         23 telnet  不加密的
+		 80  http   上网
+		 443 https  加密上网
+
+win远程连接软件：
+xshell   5/6  学校个人免费   
+secureCRT 商业
+putty   
+
+Linux:
+ssh
+
+4.安装xshell
+
+5.CentOS安装深入
+
+http://mirrors.163.com/.help/CentOS7-Base-163.repo
+下载：curl,wget
+配置官方源更新地址：
+curl -s -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+curl -s -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
+
+配置第三方epel源更新地址：
+curl -s -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
+
+操作：
+yum update -y  #更新所有软件到最新
+CentOS6和CentOS7都要安装的企业运维常用基础工具包
+yum install tree nmap dos2unix lrzsz nc lsof wget tcpdump htop iftop iotop sysstat nethogs -y
+CentOS7要安装的企业运维常用基础工具包
+yum install psmisc net-tools bash-completion vim-enhanced -y 
+
+
+5.手动配置IP
+
+6.Linux bash命令行基础
+
+作业：
+1.重新安装C7.9,8.3,ubuntu20.04
+2.xshell配置熟悉下。
+3.linux bash命令知识，快捷键  开机关机命令 基础命令
+
+预习：
+Linux命令行帮助及基础命令讲解1
+https://ke.qq.com/course/2806831?taid=9996020988171311
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

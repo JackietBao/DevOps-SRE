@@ -1,0 +1,292 @@
+每个人心里都有一个账户：
+什么是最重要的？
+1.【学习是最重要的事情】
+2.家庭、女朋友。
+3.工作
+技术的提升仅是量的积累，思想的提升才是质的飞跃。————老男孩
+
+技术重要，学习技术过程中，【积累的学习能力】，思维方法更重要。————老男孩
+
+
+给文件加特殊属性，实现特殊功能的命令。
+
+
+chattr 
+a 只能追加内容，不能删除。
+i 不能修改，不能删除。
+chattr +i oldboy.txt #增加i属性。
+chattr -i oldboy.txt #减少i属性。
+lsattr 查看chattr设置的属性
+
+
+练习：i属性
+[root@oldboy ~]# touch oldboy.txt
+[root@oldboy ~]# lsattr oldboy.txt
+---------------- oldboy.txt
+[root@oldboy ~]# chattr +i oldboy.txt
+[root@oldboy ~]# lsattr oldboy.txt
+----i----------- oldboy.txt
+[root@oldboy ~]# rm -f oldboy.txt 
+rm: 无法删除"oldboy.txt": 不允许的操作
+
+
+练习：a属性
+[root@oldboy ~]# ls oldboy.txt 
+oldboy.txt
+[root@oldboy ~]# chattr +a oldboy.txt
+[root@oldboy ~]# lsattr oldboy.txt 
+----ia---------- oldboy.txt
+[root@oldboy ~]# chattr -i oldboy.txt
+[root@oldboy ~]# lsattr oldboy.txt 
+-----a---------- oldboy.txt
+[root@oldboy ~]# rm -f oldboy.txt 
+rm: 无法删除"oldboy.txt": 不允许的操作
+[root@oldboy ~]# echo 1 >oldboy.txt 
+-bash: oldboy.txt: 不允许的操作
+[root@oldboy ~]# echo 1 >>oldboy.txt 
+[root@oldboy ~]# echo 1 >>oldboy.txt 
+[root@oldboy ~]# echo 1 >>oldboy.txt 
+[root@oldboy ~]# echo 1 >>oldboy.txt 
+[root@oldboy ~]# cat oldboy.txt
+1
+1
+1
+1
+[root@oldboy ~]# chattr -a oldboy.txt
+
+
+企业中用途：保护关键文件，防止被非法写入
+[root@oldboy bin]# chattr -i /etc/passwd /etc/group /etc/shadow /etc/gshadow /etc/sudoers
+[root@oldboy bin]# lsattr  /etc/passwd /etc/group /etc/shadow /etc/gshadow /etc/sudoers
+
+
+
+
+Linux系统权限。
+
+1、基础权限介绍
+====基础权限 共9位====
+rw-    r--     r--
+
+1）3位一组，
+2）前3位，用户位（owner），中三位为用户组位（group），后三位为其他用户位（others）
+3)
+r read  可读的权限 用数字4来表示，三位中的首位。
+w write 可写的权限 用数字2来表示，三位中的中间位
+x execute 可执行的权限 用数字1来表示，三位中的最后位
+- 没有权限  
+
+2、画图讲解
+
+3、文件和目录权限细节总结
+1）针对【文件】
+r 可以读取文件内容（block里）的权限。
+w 可以增加、修改、删除文件内容（block里）的权限。
+   有没有删除文件本身的权限呢？？？ 
+   【删除文件的权限和文件本身属性无关】
+x 可以执行文件
+  条件：
+    a.本身可执行
+	b.配合r。
+	c.root不受r的控制。
+- 没有权限
+
+
+Linux系统中的权限对于文件和目录来说，是有一定区别的，下面先列举下普通文件对应的权限重要知识。
+1）可读r：表示具有读取、浏览文件内容(即读取文件实体block)的权限。
+2）可写w：表示具有新增、修改、删除文件内容的权限。
+3）可执行x：表示具有执行文件的权限。
+其中，对于可读r，这里有两点需要说明：
+如果没有可读r的配合，那么使用vim编辑文件时会提示无法编辑（但可强制编辑覆盖文件），可以使用echo等命令进行重定向或追加内容到文件；
+删除、移动或创建文件等的权限是受父目录（上一级目录）的权限控制的
+对于可执行x，需要注意以下3点。
+首先文件的本身要能够执行（命令或脚本）。
+如果是普通用户，同时还需要具备可读r的权限才能执行文件。
+而root用户只要有可执行x的权限就能执行文件。
+
+
+2）针对目录对应读、写、执行权限的详细说明
+Linux系统中目录的权限和文件有一些细微区别，下面是目录对应的权限重要知识。
+1）可读r：表示具有浏览目录下面文件及子目录名的权限，例如，可执行ls dir命令查看目录下的内容。但是如果没有可执行x的配合，则不能切换到指定目录里，即无法执行cd dir命令。
+
+2）可写w：表示具有增加、删除或修改目录内文件的权限。但是，如果没有可执行x的配合，即使有w权限，也无法删除或创建文件。
+
+
+3）可执行x：表示具有进入目录的权限。例如可以执行cd dir命令切到目录下，但是无法列表目录下的文件及子目录。 
+
+
+
+4、搭建环境测试
+
+
+Linux系统9位基础权限测试环境下的用户角色需求规划
+incahome  家组
+oldboy	 家庭男主人，用来代表用户（User）角色，是文件的所有者
+oldgirl  女主人（和所有者oldboy属于相同组，oldboy的家人）用来代表用户组incahome的角色
+其他人	 test	其他（others）人，用来代表其他用户角色
+
+
+实践：
+[root@oldboy ~]# groupadd incahome
+[root@oldboy ~]# useradd oldboy -g incahome
+[root@oldboy ~]# useradd oldgirl -g incahome
+[root@oldboy ~]# id oldboy
+uid=5023(oldboy) gid=5023(incahome) 组=5023(incahome)
+[root@oldboy ~]# id oldgirl
+uid=5024(oldgirl) gid=5023(incahome) 组=5023(incahome)
+[root@oldboy ~]# useradd test
+开启四个窗口，依次调整为如下用户登录：root,oldboy,oldgirl,test
+
+root窗口：
+[root@oldboy ~]# mkdir /oldboy -p
+[root@oldboy ~]# cd /oldboy/
+[root@oldboy oldboy]# echo "echo 'I am 35.'" >test.sh
+[root@oldboy oldboy]# cat test.sh
+echo 'I am 35.'
+[root@oldboy oldboy]# ls -l test.sh 
+-rw-r--r--. 1 root root 16 5月  20 12:43 test.sh
+
+
+测试得出结论；
+
+
+
+设置新的用户和组
+[root@oldboy oldboy]# chown oldboy.incahome test.sh 
+[root@oldboy oldboy]# ls -l
+总用量 4
+-rw-r--r--. 1 oldboy incahome 16 5月  20 12:43 test.sh
+
+调整权限：
+[root@oldboy oldboy]# chmod 775 test.sh 
+[root@oldboy oldboy]# ls -l
+总用量 4
+-rwxrwxr-x. 1 oldboy incahome 22 5月  20 12:52 test.sh
+
+
+
+[root@oldboy /]# chown oldboy.incahome /oldboy/
+[root@oldboy /]# ls -ld /oldboy/
+drwxr-xr-x. 2 oldboy incahome 21 5月  20 12:45 /oldboy/
+
+[root@oldboy /]# chmod 761 /oldboy/
+[root@oldboy /]# ls -ld /oldboy/
+drwxrw---x. 2 oldboy incahome 30 5月  20 13:50 /oldboy/
+
+
+=====权限设置====
+1）数字权限
+r   4
+w   2
+x   1
+-   0
+
+字符权限rwx r-x r-x   数字权限 755
+字符权限rwx rw- --x   数字权限 761
+
+
+
+
+2）字符权限
+字符权限 rwxr-xr-x.  数字权限 755
+字符权限 rw-rw-r--.  数字权限 664
+字符权限 rw-r-xr--.  数字权限 654
+字符权限 rwxr-xr-x.  数字权限 755
+字符权限 rwxr-xrwx.  数字权限 757
+
+数字权限 715 字符权限  rwx--xr-x
+数字权限 661 字符权限  rw-rw---x
+数字权限 113 字符权限  --x--x-wx
+数字权限 274 字符权限  -w-rwxr--
+数字权限 576 字符权限  r-xrwxrw-
+
+设置命令：chmod change mode
+
+-R 递归设置
+
+数字权限设置：*****
+chmod 数字权限  文件
+
+例子：
+chmod 755  文件
+chmod -R 755 /oldboy
+
+字符权限设置：*****
+
+（1）用户或用户组的定义
+u 代表属主用户三位（owner/user）
+g 代表属组(group)三位
+o 代表其它用户(other)三位
+a 或者不写，同时代表ugo属主、属组和其他用户，也就是上面三个用户（或组）的所有(all)；
+
+（2）权限定义字母，和前文一致。
+r 代表读权限，用数字4表示；
+w 代表写权限，用数字2表示；
+x 代表执行权限，用数字1表示；
+- 代表没有权限，用数字0表示。
+
+（3）权限增减字符详细定义
++：添加权限。
+-：取消权限。
+=：取消其他所有权限，然后赋予给定的权限。
+
+
+权限命令	用户类型	操作字符	权限字符	文件或目录
+chmod	     u g o a    + - =        r w x -     目录文件
+
+chmod u+x,g-w,o=rwx  test.sh
+
+练习：
+
+
+[root@oldboy /]# cd oldboy/
+[root@oldboy oldboy]# ls -l
+总用量 8
+-rwxr-xr-x. 1 oldboy incahome 22 5月  20 13:50 a
+-rwxr-xr-x. 1 oldboy incahome 22 5月  20 13:50 test.sh
+[root@oldboy oldboy]# chmod u-x test.sh 
+[root@oldboy oldboy]# ls -l
+总用量 8
+-rwxr-xr-x. 1 oldboy incahome 22 5月  20 13:50 a
+-rw-r-xr-x. 1 oldboy incahome 22 5月  20 13:50 test.sh
+[root@oldboy oldboy]# chmod g+w test.sh 
+[root@oldboy oldboy]# chmod o=--- test.sh 
+[root@oldboy oldboy]# ls -l
+总用量 8
+-rwxr-xr-x. 1 oldboy incahome 22 5月  20 13:50 a
+-rw-rwx---. 1 oldboy incahome 22 5月  20 13:50 test.sh
+[root@oldboy oldboy]# chmod u=x,g=-,o=rwx test.sh 
+[root@oldboy oldboy]# ls -l
+总用量 8
+-rwxr-xr-x. 1 oldboy incahome 22 5月  20 13:50 a
+---x---rwx. 1 oldboy incahome 22 5月  20 13:50 test.sh
+[root@oldboy oldboy]# chmod -x test.sh 
+[root@oldboy oldboy]# ls -l
+总用量 8
+-rwxr-xr-x. 1 oldboy incahome 22 5月  20 13:50 a
+-------rw-. 1 oldboy incahome 22 5月  20 13:50 test.sh
+[root@oldboy oldboy]# ls -l /etc/rc.local 
+lrwxrwxrwx. 1 root root 13 5月   7 2021 /etc/rc.local -> rc.d/rc.local
+[root@oldboy oldboy]# ls -l /etc/rc.d/rc.local 
+-rwxr-xr-x. 1 root root 473 4月   1 2020 /etc/rc.d/rc.local
+[root@oldboy oldboy]# chmod +x /etc/rc.d/rc.local 
+[root@oldboy oldboy]# chmod -x /etc/rc.d/rc.local 
+[root@oldboy oldboy]# ls -l /etc/rc.d/rc.local 
+-rw-r--r--. 1 root root 473 4月   1 2020 /etc/rc.d/rc.local
+[root@oldboy oldboy]# 
+[root@oldboy oldboy]# chmod +x /etc/rc.d/rc.local 
+[root@oldboy oldboy]# ls -l /etc/rc.d/rc.local 
+-rwxr-xr-x. 1 root root 473 4月   1 2020 /etc/rc.d/rc.local
+[root@oldboy oldboy]# chmod a-x /etc/rc.d/rc.local 
+[root@oldboy oldboy]# ls -l /etc/rc.d/rc.local 
+-rw-r--r--. 1 root root 473 4月   1 2020 /etc/rc.d/rc.local
+
+下节内容：
+1.12权限。
+
+
+
+
+ls -l属性里点相关文章
+https://blog.csdn.net/weixin_28914869/article/details/116593794
+

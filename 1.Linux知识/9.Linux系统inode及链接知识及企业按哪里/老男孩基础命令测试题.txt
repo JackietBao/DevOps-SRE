@@ -1,0 +1,105 @@
+
+老男孩Linux77期基础命令测试题：
+基础不牢，地动山摇。——老男孩
+
+01）请在/opt下创建oldboyedu目录，并在oldboyedu目录下创建dir1到dir5，共5个目录。
+
+[root@oldboy opt]# mkdir /opt/oldboyedu -p
+[root@oldboy opt]# cd oldboyedu/
+[root@oldboy oldboyedu]# mkdir dir{1..5}
+[root@oldboy oldboyedu]# echo {a..z}
+a b c d e f g h i j k l m n o p q r s t u v w x y z
+
+
+02）请用一条命令完成创建多级目录/opt/oldboy/data/test123。
+
+[root@oldboy oldboyedu]# mkdir -p /opt/oldboy/data/test123
+
+03）请在/opt/oldboyedu目录下创建f1到f5，共5个文件。
+[root@oldboy oldboyedu]# cd /opt/oldboyedu
+[root@oldboy oldboyedu]# touch f{1..5}
+[root@oldboy oldboyedu]# ls
+dir1  dir2  dir3  dir4  dir5  f1  f2  f3  f4  f5
+[root@oldboy oldboyedu]# tree
+.
+├── dir1
+├── dir2
+├── dir3
+├── dir4
+├── dir5
+├── f1
+├── f2
+├── f3
+├── f4
+└── f5
+
+04）查看/opt下的完整目录结构，并【只】显示子目录目录。
+[root@oldboy opt]# tree -d
+.
+└── oldboyedu
+    ├── dir1
+    ├── dir2
+    ├── dir3
+    ├── dir4
+    └── dir5
+如何过滤出目录：
+[root@oldboy opt]# ls -p oldboyedu/
+dir1/  dir2/  dir3/  dir4/  dir5/  f1  f2  f3  f4  f5
+[root@oldboy opt]# ls -F oldboyedu/
+dir1/  dir2/  dir3/  dir4/  dir5/  f1  f2  f3  f4  f5
+[root@oldboy opt]# ls -F oldboyedu/|grep /
+dir1/
+dir2/
+dir3/
+dir4/
+dir5/
+[root@oldboy opt]# ls -F oldboyedu/|grep /$ #$以...结尾。
+dir1/
+dir2/
+dir3/
+dir4/
+dir5/
+[root@oldboy oldboyedu]# ls -l|grep ^d #以..开头。
+drwxr-xr-x. 2 root root 6 5月  18 09:51 dir1
+drwxr-xr-x. 2 root root 6 5月  18 09:51 dir2
+drwxr-xr-x. 2 root root 6 5月  18 09:51 dir3
+drwxr-xr-x. 2 root root 6 5月  18 09:51 dir4
+drwxr-xr-x. 2 root root 6 5月  18 09:51 dir5
+
+05）切换到/opt/oldboyedu目录下，并打印当前所在的路径。
+
+[root@oldboy oldboyedu]# cd /opt/oldboyedu
+[root@oldboy oldboyedu]# pwd
+/opt/oldboyedu
+
+06）编辑f1文件，增加”老男孩教育“内容。
+
+07）使用重定向追加的方式给f2追加内容，“I am 30.”。
+[root@oldboy oldboyedu]# echo "I am 30." >>f2
+[root@oldboy oldboyedu]# cat f2
+I am 30.
+
+08）把/etc/passwd内容重定向到f4里面，并过滤出含有halt的行。
+cat /etc/passwd >f4
+cat f4
+grep halt /etc/passwd #####
+
+
+10）浏览f4内容，并查看行号。
+
+11）浏览文件头部2行，和尾部2行。并跟踪f4文件尾部的变化。
+
+12）把oldboyedu目录复制到/opt/oldboy/data下
+
+13）删除/opt/oldboy/data下的test123目录
+
+14）打包oldboyedu目录，到备份目录/backup下，并按日期命名压缩包。
+
+15）删除/backup下7天前的扩展名为.tar.gz的所有文件。
+
+16）打包oldboyedu目录下，所有以f开头的文件，并移动到/opt下的data目录。
+
+17）为重启网络命令设置别名net。并取消系统的cp别名。
+
+18）清空所有历史记录，删除/opt下所有内容。
+
