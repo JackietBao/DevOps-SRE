@@ -156,7 +156,7 @@ print('hello, world!')
 
 IDLE是安装Python环境时自带的集成开发工具，如下图所示。但是由于IDLE的用户体验并不是那么好所以很少在实际开发中被采用。
 
-[![img](assets/1.初识Python/python-idle.png)](https://github.com/jackfrued/Python-100-Days/blob/master/Day01-15/res/python-idle.png)
+[![img](assets/初识Python/python-idle.png)](https://github.com/jackfrued/Python-100-Days/blob/master/Day01-15/res/python-idle.png)
 
 #### IPython - 更好的交互式编程工具
 
@@ -174,11 +174,11 @@ pip3 install ipython
 
 安装成功后，可以通过下面的ipython命令启动IPython，如下图所示。
 
-[![img](assets/1.初识Python/python-ipython.png)](https://github.com/jackfrued/Python-100-Days/blob/master/Day01-15/res/python-ipython.png)
+[![img](assets/初识Python/python-ipython.png)](https://github.com/jackfrued/Python-100-Days/blob/master/Day01-15/res/python-ipython.png)
 
 #### Sublime Text - 高级文本编辑器
 
-[![img](assets/1.初识Python/python-sublime.png)](https://github.com/jackfrued/Python-100-Days/blob/master/Day01-15/res/python-sublime.png)
+[![img](assets/初识Python/python-sublime.png)](https://github.com/jackfrued/Python-100-Days/blob/master/Day01-15/res/python-sublime.png)
 
 - 首先可以通过[官方网站](https://www.sublimetext.com/)下载安装程序安装Sublime Text 3或Sublime Text 2。
 
@@ -214,7 +214,7 @@ pip3 install ipython
 
 PyCharm的安装、配置和使用在[《玩转PyCharm》](https://github.com/jackfrued/Python-100-Days/blob/master/番外篇/玩转PyCharm.md)进行了介绍，有兴趣的读者可以选择阅读。
 
-[![img](assets/1.初识Python/python-pycharm.png)](https://github.com/jackfrued/Python-100-Days/blob/master/Day01-15/res/python-pycharm.png)
+[![img](assets/初识Python/python-pycharm.png)](https://github.com/jackfrued/Python-100-Days/blob/master/Day01-15/res/python-pycharm.png)
 
 ### 练习
 
