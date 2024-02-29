@@ -109,7 +109,7 @@ python3 --version
 
 当然也可以先输入`python`或`python3`进入交互式环境，再执行以下的代码检查Python的版本。
 
-```bash
+```python
 import sys
 
 print(sys.version_info)
@@ -128,13 +128,13 @@ print('hello, world!')
 
 切换到源代码所在的目录并执行下面的命令，看看屏幕上是否输出了"hello, world!"。
 
-```bash
+```python
 python hello.py
 ```
 
 或
 
-```bash
+```python
 python3 hello.py
 ```
 
@@ -162,13 +162,13 @@ IDLE是安装Python环境时自带的集成开发工具，如下图所示。但�
 
 IPython是一种基于Python的交互式解释器。相较于原生的Python交互式环境，IPython提供了更为强大的编辑和交互功能。可以通过Python的包管理工具pip安装IPython，具体的操作如下所示。
 
-```bash
+```python
 pip install ipython
 ```
 
 或
 
-```bash
+```python
 pip3 install ipython
 ```
 
