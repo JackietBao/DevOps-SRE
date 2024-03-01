@@ -20,12 +20,13 @@ gopath目录就是我们存储我们所编写源代码的目录。该目录下�
 
 ```go
 package main
-
+//这是Go语言程序的标准开头。每个Go文件都属于一个包（package），而package main表明这个文件是一个可执行程序的入口。在Go中，main包特殊对待，它告诉Go编译器这个程序是可执行的，而不仅仅是一个库
 import "fmt"
-
+//这行代码导入了Go语言的标准库fmt包。fmt包含了格式化输入输出的函数，比如将字符串输出到控制台的Println函数。在这个程序中，我们需要使用fmt包来输出字符串到控制台
 func main() {
    fmt.Println("Hello, World!")
 }
+//这是main函数内的唯一一条语句，调用了fmt包的Println函数
 ```
 
 2.执行go程序
