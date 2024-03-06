@@ -45,7 +45,7 @@ func main() {
 	//5、批量定义常量
 	const (
 		//在同一个代码里，相同的变量名字不能同时指定变量和常量
-		name string = "Tianbao"
+		name string = "Tianbao\n"
 		age1        = 26
 	)
 	fmt.Println(name, age1)
