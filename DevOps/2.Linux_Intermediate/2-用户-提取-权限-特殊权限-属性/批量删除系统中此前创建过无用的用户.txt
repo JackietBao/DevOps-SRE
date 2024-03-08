@@ -1,1 +1,0 @@
-awk -F ':' $3 > 1000{print $1} /etc/passwd | sed -r 's#(.*)#userdel -r \1#g' | bash'
