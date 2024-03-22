@@ -60,7 +60,7 @@ result = False or False # False
 #       如果第一个值是True，则直接返回第一个值，否则返回第二个值    
 
 # True and True
-result = 1 and 2 # 2
+result = 1 and 2 # 2 "1被视为真（True）"
 # True and False
 result = 1 and 0 # 0
 # False and True
