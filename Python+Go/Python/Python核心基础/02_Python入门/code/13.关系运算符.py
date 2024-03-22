@@ -42,4 +42,4 @@ result = 1 == True # True
 result = 1 is True # False
 result = 1 is not True # True
 print('result =',result)
-print(id(1),id(True))
+print(id(1),id(True))#打印整数1和布尔值True的内存地址
