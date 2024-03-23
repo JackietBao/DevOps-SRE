@@ -15,6 +15,8 @@ while i < 9:
     while j < i:
         j += 1
         print(f"{j}*{i}={i*j} ",end="")
-
+        #{j}：代表内层循环的计数器 j 的值
+        #{i}：代表外层循环的计数器 i 的值
+        #{i*j}：代表 i 乘以 j 的结果
     print()
 
