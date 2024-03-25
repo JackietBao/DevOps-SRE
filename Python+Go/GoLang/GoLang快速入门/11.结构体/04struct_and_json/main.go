@@ -5,23 +5,39 @@ import (
 	"fmt"
 )
 
-type Student struct {
-	ID     int
-	Gender string
-	name   string //私有属性不能被 json 包访问
-	Sno    string
+// 序列化：将结构体转化成json字符串
+func main() {
+	// 2、初始化结构体
+	s := Student{
+		ID:      1,
+		Name:    "zhangsan",
+		Address: "bj",
+		Age:     24,
+	}
+	fmt.Printf("%T %#v \n", s, s)
+	// 3、将结构体转化为json数据
+	/*
+		json.Marshal方法返回两个值
+		第一个值： sByte  是一个 []byte 对象（将结构体转化出来的数据）
+		第二个值： err    json.Marshal转化失败，通过err接收
+	*/
+	sByte, err := json.Marshal(s)
+	if err != nil {
+		fmt.Println("json.Marshal err, ", err)
+	}
+	// 将string(sByte)类型转换为 string类型
+	fmt.Println(string(sByte))
+	/*
+		结构体数据：main.Student main.Student{ID:1, Name:"zhangsan", Age:24, Address:"bj"}
+		json数据：{"ID":1,"Name":"zhangsan","Age":24,"Address":"bj"}
+
+	*/
 }
 
-func main() {
-	var s1 = Student{
-		ID:     1,
-		Gender: "男",
-		name:   "李四",
-		Sno:    "s0001",
-	}
-	fmt.Printf("%#v\n", s1) // main.Student{ID:1, Gender:"男", name:"李四", Sno:"s0001"}
-	var s, _ = json.Marshal(s1)
-	jsonStr := string(s)
-	//将 s（即序列化后的 JSON 字节切片）转换为字符串类型，并将结果赋值给变量 jsonStr
-	fmt.Println(jsonStr) // {"ID":1,"Gender":"男","Sno":"s0001"}
+// 1、定义结构体
+type Student struct {
+	ID      int
+	Name    string
+	Age     int
+	Address string
 }
