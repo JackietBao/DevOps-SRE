@@ -2,29 +2,35 @@ package main
 
 import "fmt"
 
-type Person struct {
-	name string
-	age  int
-}
-
-//值类型接受者
-func (p Person) printInfo() {
-	fmt.Printf("姓名:%v 年龄:%v\n", p.name, p.age) // 姓名:小王子 年龄:25
-}
-
-//指针类型接收者
-func (p *Person) setInfo(name string, age int) {
-	p.name = name
-	p.age = age
-}
 func main() {
-	p1 := Person{
-		name: "小王子",
-		age:  25,
+	// 2、实例化结构体（三种方法）
+	p := Person{
+		Name: "zhangsan",
+		Age:  24,
 	}
-	p1.printInfo() // 姓名:小王子 年龄:25
-	p1.setInfo("张三", 20)
-	//调用了 p1 变量的 setInfo() 方法，传递了新的姓名和年龄作为参数。
-	//因为 setInfo() 方法的接收者是指针类型，所以在方法内部对接收者进行的修改会影响到原始变量
-	p1.printInfo() // 姓名:张三 年龄:20
+	p.setInfo()
+	p.sayHi()
+	fmt.Println("main", p.Name) // 理论上是lisi
+	fmt.Println("main", p.Age)
+}
+
+// 1、定义一个结构体
+type Person struct {
+	Name string
+	Age  int
+}
+
+// 3、指针接收者绑定方法（*Person传递的是一个指针）
+// 指针接收者才类似于python语言的self
+func (xx *Person) setInfo() {
+	fmt.Println("通过结构体调用了方法")
+	xx.Name = "lisi"
+}
+
+// 值接收者（Person） 只传递的是拷贝的一份数据
+// 值接收者修改数据，只是修改的是拷贝的那份数据，原始数据
+func (xx Person) sayHi() {
+	fmt.Println("hello world")
+	xx.Age = 100
+	fmt.Println("sayHi", xx.Age)
 }
