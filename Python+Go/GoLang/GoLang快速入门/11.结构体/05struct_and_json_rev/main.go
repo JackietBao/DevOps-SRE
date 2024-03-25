@@ -5,28 +5,58 @@ import (
 	"fmt"
 )
 
-type Student struct {
-	ID     int
-	Gender string
-	Name   string
-	Sno    string
-}
+// 反序列化：将json字符串转换成struct对象
+/*
+结构体的作用有两个
+第一：绑定方法和接收者，然后通过结构体调用方法（类方法）
+第二：可以和json字符串进行相互转
+*/
+
+/*
+序列化： 将struct对象转换成 json的string格式
+反序列化：将一个json字符串转换成struct对象
+*/
 
 func main() {
-	var jsonStr = `{"ID":1,"Gender":"男","Name":"李四","Sno":"s0001"}`
-	//定义了一个 JSON 字符串 jsonStr
-	var student Student //定义一个 Monster 实例
-	//创建了一个 Student 类型的变量 student，用于存储反序列化后的数据。
-	err := json.Unmarshal([]byte(jsonStr), &student)
-	//json.Unmarshal:将 JSON 数据解析为 Go 数据结构。它的作用是将 JSON 格式的数据解析成 Go 语言中的数据类型
-	//[]byte(jsonStr)：将字符串 jsonStr 转换为字节切片（即 byte slice）
-	//在 Go 语言中，字符串和字节切片之间可以相互转换
-	//&student：这是一个取址操作符，用于获取结构体变量 student 的地址
-	if err != nil {
-		//检查反序列化过程中是否发生了错误，如果有错误，则打印错误信息
-		fmt.Printf("unmarshal err=%v\n", err)
-	}
+	//// 2、反序列化：结构体对应的json字符串数据(string)
+	//// 当字符串 本身有双引号，或者 多行的时候使用 ``
+	s := `{"ID":1,"Name":"zhangsan","Age":24,"Address":"bj"}`
 
-	fmt.Printf("反序列化后 student=%#v student.Name=%v \n", student, student.Name)
-	//%#v 会输出变量的 Go 语法表示形式，包括字段名和值；%v 会只输出值
+	// 3、将json字符串转换为struct结构体
+	var stu Student
+	// 将string类型的数据转换为一个 []byte类型数据
+	byteS := []byte(s)
+	err := json.Unmarshal(byteS, &stu)
+	if err != nil {
+		fmt.Println("json.Unmarshal err, ", err)
+	}
+	//// %#v 是将数据展开
+	//fmt.Printf("%T %#v \n", stu, stu)
+	//fmt.Println(stu.Name, stu.Address)
+
+	//// 4、结构体嵌套
+	//p := Person{
+	//	Id: 1,
+	//	Stu: []Student{
+	//		{ID: 1, Name: "zs", Age: 24, Address: "bj"},
+	//		{ID: 2, Name: "lisi", Age: 24, Address: "bj"},
+	//		{ID: 3, Name: "wangwu", Age: 24, Address: "bj"},
+	//	},
+	//}
+	//
+	//s, _ := json.Marshal(p.Stu)
+	//fmt.Println(string(s))
+}
+
+type Person struct {
+	Id  int
+	Stu []Student
+}
+
+// 1、定义结构体
+type Student struct {
+	ID      int
+	Name    string
+	Age     int
+	Address string
 }
