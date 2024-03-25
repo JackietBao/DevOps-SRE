@@ -3,29 +3,49 @@ package main
 import (
 	"fmt"
 	"time"
-	//time 包提供了时间相关的函数和类型
 )
+
+func main() {
+	// goroutine并行测试
+	//test()
+	// go中开启一个协程 go关键字 方法名()
+	go test()
+	for i := 0; i < 10; i++ {
+		fmt.Println("main", i)
+		time.Sleep(time.Microsecond * 100)
+	}
+
+	time.Sleep(time.Second)
+	fmt.Println("over")
+}
 
 func test() {
 	for i := 0; i < 10; i++ {
-		fmt.Println("test() 你好golang")
-		time.Sleep(time.Millisecond * 100)
-		//定义了一个名为 test 的函数。该函数会循环执行 10 次，
-		//每次循环打印一行字符串 "test() 你好golang"，然后休眠 100 毫秒
-	}
-}
-func main() {
-	go test() //表示开启一个协程
-	for i := 0; i < 2; i++ {
-		fmt.Println("main() 你好golang")
-		time.Sleep(time.Millisecond * 100)
+		fmt.Println("test", i)
+		time.Sleep(time.Microsecond * 100)
 	}
 }
 
 /*
-main() 你好golang
-test() 你好golang
-main() 你好golang
-test() 你好golang
-test() 你好golang
+main 0
+test 0
+main 1
+test 1
+test 2
+main 2
+test 3
+main 3
+test 4
+test 5
+main 4
+main 5
+test 6
+main 6
+test 7
+main 7
+test 8
+main 8
+main 9
+test 9
+over
 */
