@@ -1,89 +1,49 @@
-/*
 package main
 
 import "fmt"
 
-type person struct {
-	//定义了一个名为 person 的结构体类型
-	name string
-	city string
-	age  int
-}
-
-func main() {
-	var p1 person
-	//声明了一个变量 p1，其类型为 person 结构体
-	p1.name = "张三"
-	p1.city = "北京"
-	p1.age = 18
-	fmt.Printf("p1=%v\n", p1) // p1={张三 北京 18}
-	//%v 是一个占位符，表示按照变量的默认格式输出
-	fmt.Printf("p1=%#v\n", p1) // p1=main.person{name:"张三", city:"北京", age:18}
-	//%#v 是一个占位符，表示按照 Go 语法格式输出
-}
-
+/*
+这一块大家学会两个事情
+第一：如何定义一个结构体
+第二：初始化结构体的三种方法
 */
 
+func main() {
+	// 结构体数据类型，可以存储json这种数据，绑定方法
+	// 1、通过var关键字来实例化结构体
+	var p1 Person
+	p1.Age = 28
+	p1.name = "zhangsan"
+	fmt.Println(p1)
+	fmt.Println(p1.name)
+
+	//// 2、new方法实例化一个结构体(返回指针类型)
+	//var p2 = new(Person)
+	//p2.Age = 25
+	//p2.name = "lisi"
+	//fmt.Println(p2)
+
+	//// 3、:= 键值对初始化
+	//p3 := Person{
+	//	name: "wangwu",
+	//	Age:  35,
+	//}
+	//fmt.Println(p3)
+
+}
+
 /*
-
-package main
-
-import "fmt"
-
-type person struct {
+type: 关键字
+Person： 结构体名字
+struct：  定义结构体的关键字
+*/
+// golang中严格区分大小写（json序列化的时候，或者不同包访问是不能访问小写）
+type Person struct {
 	name string
-	city string
-	age  int
+	Age  int
 }
 
-func main() {
-	var p2 = new(person)
-	p2.name = "张三"
-	p2.age = 20
-	p2.city = "北京"
-	fmt.Printf("p2=%#v \n", p2) //p2=&main.person{name:"张三", city:"北京", age:20}
-
-
-
-
-
-package main
-import "fmt"
-type person struct {
-	name string
-	city string
-	age int
-}
-func main() {
-	p4 := person{
-		name: "zhangsan",
-		city: "北京",
-		age: 18,
-	}
-	// p4=main.person{name:"zhangsan", city:"北京", age:18}
-	fmt.Printf("p4=%#v\n", p4)
-}
-
-}
-
-
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
+1、结构体，与函数啥区别啊。什么时候用结构体呢？
+	结构体是go语言中实现类的一种方案，简单理解一个是类，一个是方法
+*/
