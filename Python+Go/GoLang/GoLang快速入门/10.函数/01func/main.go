@@ -39,3 +39,44 @@ xxx  : 函数的名字（类似定义的全局变量）
 func xxx() {
 	fmt.Println("hello world")
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package main
+
+import "fmt"
+
+func add(x, y int, c string) int {
+//函数的签名是 func add(x, y int, c string) int
+//这个函数叫做 add，接受两个整数类型的参数 x 和 y，以及一个字符串类型的参数 c
+//并且返回一个整数类型的值
+//它打印一条信息 "运行了add函数"，然后返回 x + y 的结果
+
+	fmt.Println("运行了add函数")
+	return x + y
+}
+
+func main() {
+	val := add(1, 1, "zhangsan")
+	//调用了 add 函数，并传入了参数 1, 1, "zhangsan"
+	//意味着 x 的值为 1，y 的值为 1，c 的值为 "zhangsan"
+	//main 函数会接收 add 函数的返回值，并将其赋给变量 val。
+	//最后，它打印出 "函数执行结果：" + val
+	fmt.Println("函数执行结果：", val)
+}
+
+
+
