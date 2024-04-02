@@ -51,3 +51,41 @@ printInfo() : 一个方法绑定了结构体之后就叫做 结构体方法
 func (xx Person) printInfo() { // 这样定义的是一个函数
 	fmt.Println("name: ", xx.Name, xx.Age)
 }
+
+
+
+
+
+
+
+package main
+
+import "fmt"
+
+func main() {
+	pxx := Person{
+		Name: "zhangsan",
+		Age:  28,
+	}
+	fmt.Println(pxx)
+
+	pxx.printInfo()
+
+	px2 := Person{
+		Name: "lisi",
+		Age:  26,
+	}
+	px2.printInfo()
+}
+
+type Person struct {
+	Name string
+	Age  int
+}
+
+func (xx Person) printInfo() {//这行代码定义了一个方法，方法名为printInfo，该方法属于Person类型的接收者
+//(xx Person)表示该方法是属于Person类型的
+//方法名前面的括号中指定了接收者的名称xx和类型Person，这意味着在方法中可以使用xx来引用接收者对象的实例
+	fmt.Println("name: ", xx.Name, xx.Age)
+	//xx.Name表示访问接收者对象的Name字段，xx.Age表示访问接收者对象的Age字段
+}
