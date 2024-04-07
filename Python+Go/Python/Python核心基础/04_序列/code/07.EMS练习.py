@@ -23,6 +23,7 @@ while True:
         # 显示员工信息
         for emp in emps :
             print(f'\t{n}\t{emp}')
+            #{}用于在字符串中插入变量的值
             n += 1
     elif user_choose == '2':
         # 添加员工

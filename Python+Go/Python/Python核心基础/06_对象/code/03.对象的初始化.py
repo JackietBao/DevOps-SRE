@@ -53,3 +53,23 @@ p4 = Person('唐僧')
 # print(p4.name)
 
 p4.say_hello()
+
+
+
+class Person :
+    #声明了一个名为 Person 的类。在Python中，类是一种用来创建对象的模板，它定义了对象的属性和方法
+    def __init__(self, name):
+        #这是一个特殊的方法，称为构造函数或初始化方法。它在创建类的实例时被调用。self
+        # 是一个指向对象自身的引用，name 是构造函数的参数。在这个方法内部，self.name 表示类的实例的 name 属性
+        print(self)
+        self.name = name
+#这行代码将传递给构造函数的 name 参数赋值给当前实例的 name 属性
+    def say_hello(self):
+        # 方法定义，用于在类中定义行为。它接受 self 作为参数，以访问类的属性和其他方法
+        print('大家好，我是%s' % self.name)
+
+p1 = Person('孙悟空')
+#创建了一个名为 p1 的 Person 类的实例，并将 '孙悟空' 作为参数传递给构造函数
+print(p1.name)
+#打印了 p1 实例的 name 属性，即 '孙悟空'
+p1.say_hello()
