@@ -1,0 +1,3 @@
+"D:\Program Files\CLion 2021.1.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\02Operators_and_expressions.dir/objects.a
+D:\mingw64\bin\ar.exe cr CMakeFiles\02Operators_and_expressions.dir/objects.a @CMakeFiles\02Operators_and_expressions.dir\objects1.rsp
+D:\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\02Operators_and_expressions.dir/objects.a -Wl,--no-whole-archive -o 02Operators_and_expressions.exe -Wl,--out-implib,lib02Operators_and_expressions.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\02Operators_and_expressions.dir\linklibs.rsp
