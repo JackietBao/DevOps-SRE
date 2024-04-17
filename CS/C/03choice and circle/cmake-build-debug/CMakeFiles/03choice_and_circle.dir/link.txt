@@ -1,0 +1,3 @@
+"D:\Program Files\CLion 2021.1.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\03choice_and_circle.dir/objects.a
+D:\mingw64\bin\ar.exe cr CMakeFiles\03choice_and_circle.dir/objects.a @CMakeFiles\03choice_and_circle.dir\objects1.rsp
+D:\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\03choice_and_circle.dir/objects.a -Wl,--no-whole-archive -o 03choice_and_circle.exe -Wl,--out-implib,lib03choice_and_circle.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\03choice_and_circle.dir\linklibs.rsp

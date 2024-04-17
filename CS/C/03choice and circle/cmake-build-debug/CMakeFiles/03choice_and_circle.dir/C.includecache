@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/GitHub/DevOps-SRE/CS/C/03choice and circle/main.c
+stdio.h
+-
+stdio.h
+-
+stdio.h
+-
+stdio.h
+-
+

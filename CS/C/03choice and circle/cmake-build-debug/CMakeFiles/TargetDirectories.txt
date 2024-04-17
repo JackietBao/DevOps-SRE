@@ -1,0 +1,3 @@
+D:/GitHub/DevOps-SRE/CS/C/03choice and circle/cmake-build-debug/CMakeFiles/03choice_and_circle.dir
+D:/GitHub/DevOps-SRE/CS/C/03choice and circle/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/GitHub/DevOps-SRE/CS/C/03choice and circle/cmake-build-debug/CMakeFiles/rebuild_cache.dir
