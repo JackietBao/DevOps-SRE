@@ -52,19 +52,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "D:\SoftWare\JetBrains\CLion 2021.1.3\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "D:\Program Files\CLion 2021.1.3\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "D:\SoftWare\JetBrains\CLion 2021.1.3\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "D:\Program Files\CLion 2021.1.3\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "D:\Github\DevOps-SRE\CS\C\01the class of date and input output of date"
+CMAKE_SOURCE_DIR = "D:\GitHub\DevOps-SRE\CS\C\01the class of date and input output of date"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "D:\Github\DevOps-SRE\CS\C\01the class of date and input output of date\cmake-build-debug"
+CMAKE_BINARY_DIR = "D:\GitHub\DevOps-SRE\CS\C\01the class of date and input output of date\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/depend.make
@@ -77,16 +77,16 @@ include CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/flags.make
 
 CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/main.c.obj: CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/flags.make
 CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/main.c.obj: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\Github\DevOps-SRE\CS\C\01the class of date and input output of date\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/main.c.obj"
-	D:\Lang\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\01the_class_of_date_and_input_output_of_date.dir\main.c.obj -c "D:\Github\DevOps-SRE\CS\C\01the class of date and input output of date\main.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="D:\GitHub\DevOps-SRE\CS\C\01the class of date and input output of date\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/main.c.obj"
+	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\01the_class_of_date_and_input_output_of_date.dir\main.c.obj -c "D:\GitHub\DevOps-SRE\CS\C\01the class of date and input output of date\main.c"
 
 CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/main.c.i"
-	D:\Lang\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "D:\Github\DevOps-SRE\CS\C\01the class of date and input output of date\main.c" > CMakeFiles\01the_class_of_date_and_input_output_of_date.dir\main.c.i
+	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "D:\GitHub\DevOps-SRE\CS\C\01the class of date and input output of date\main.c" > CMakeFiles\01the_class_of_date_and_input_output_of_date.dir\main.c.i
 
 CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/main.c.s"
-	D:\Lang\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "D:\Github\DevOps-SRE\CS\C\01the class of date and input output of date\main.c" -o CMakeFiles\01the_class_of_date_and_input_output_of_date.dir\main.c.s
+	D:\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "D:\GitHub\DevOps-SRE\CS\C\01the class of date and input output of date\main.c" -o CMakeFiles\01the_class_of_date_and_input_output_of_date.dir\main.c.s
 
 # Object files for target 01the_class_of_date_and_input_output_of_date
 01the_class_of_date_and_input_output_of_date_OBJECTS = \
@@ -100,7 +100,7 @@ CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/main.c.s: cmake_forc
 01the_class_of_date_and_input_output_of_date.exe: CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/linklibs.rsp
 01the_class_of_date_and_input_output_of_date.exe: CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/objects1.rsp
 01the_class_of_date_and_input_output_of_date.exe: CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="D:\Github\DevOps-SRE\CS\C\01the class of date and input output of date\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable 01the_class_of_date_and_input_output_of_date.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="D:\GitHub\DevOps-SRE\CS\C\01the class of date and input output of date\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable 01the_class_of_date_and_input_output_of_date.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\01the_class_of_date_and_input_output_of_date.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -113,6 +113,6 @@ CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/clean:
 .PHONY : CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/clean
 
 CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "D:\Github\DevOps-SRE\CS\C\01the class of date and input output of date" "D:\Github\DevOps-SRE\CS\C\01the class of date and input output of date" "D:\Github\DevOps-SRE\CS\C\01the class of date and input output of date\cmake-build-debug" "D:\Github\DevOps-SRE\CS\C\01the class of date and input output of date\cmake-build-debug" "D:\Github\DevOps-SRE\CS\C\01the class of date and input output of date\cmake-build-debug\CMakeFiles\01the_class_of_date_and_input_output_of_date.dir\DependInfo.cmake" --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "D:\GitHub\DevOps-SRE\CS\C\01the class of date and input output of date" "D:\GitHub\DevOps-SRE\CS\C\01the class of date and input output of date" "D:\GitHub\DevOps-SRE\CS\C\01the class of date and input output of date\cmake-build-debug" "D:\GitHub\DevOps-SRE\CS\C\01the class of date and input output of date\cmake-build-debug" "D:\GitHub\DevOps-SRE\CS\C\01the class of date and input output of date\cmake-build-debug\CMakeFiles\01the_class_of_date_and_input_output_of_date.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/depend
 

@@ -6,7 +6,13 @@
 
 #IncludeRegexTransform: 
 
-D:/Github/DevOps-SRE/CS/C/01the class of date and input output of date/main.c
+D:/GitHub/DevOps-SRE/CS/C/01the class of date and input output of date/main.c
+stdio.h
+-
+stdio.h
+-
+stdio.h
+-
 stdio.h
 -
 stdio.h

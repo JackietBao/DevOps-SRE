@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "D:/Github/DevOps-SRE/CS/C/01the class of date and input output of date/main.c" "D:/Github/DevOps-SRE/CS/C/01the class of date and input output of date/cmake-build-debug/CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/main.c.obj"
+  "D:/GitHub/DevOps-SRE/CS/C/01the class of date and input output of date/main.c" "D:/GitHub/DevOps-SRE/CS/C/01the class of date and input output of date/cmake-build-debug/CMakeFiles/01the_class_of_date_and_input_output_of_date.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
