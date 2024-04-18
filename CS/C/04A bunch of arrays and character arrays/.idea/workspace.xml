@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="03choice_and_circle" targetName="03choice_and_circle" />
+      <config projectName="04A_bunch_of_arrays_and_character_arrays" targetName="04A_bunch_of_arrays_and_character_arrays" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -11,7 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4420fe0c-bcba-41bd-9312-183fb4a449d9" name="默认变更列表" comment="" />
+    <list default="true" id="e6067b2a-4a77-4a36-9de6-b5b21eb3d7eb" name="默认变更列表" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,15 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="ProjectId" id="2fDie8JxqWsCug14YMW9fGdbpvX" />
+  <component name="ProjectId" id="2fGLlyeYRPeMzWcN1OHBnUoWhSX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -46,29 +38,42 @@
     <property name="cf.first.check.clang-format" value="false" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="cmake.loaded.for.project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager">
-    <configuration name="03choice_and_circle" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="03choice_and_circle" TARGET_NAME="03choice_and_circle" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="03choice_and_circle" RUN_TARGET_NAME="03choice_and_circle">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="04A_bunch_of_arrays_and_character_arrays" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="04A_bunch_of_arrays_and_character_arrays" TARGET_NAME="04A_bunch_of_arrays_and_character_arrays" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="04A_bunch_of_arrays_and_character_arrays" RUN_TARGET_NAME="04A_bunch_of_arrays_and_character_arrays">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
-      <changelist id="4420fe0c-bcba-41bd-9312-183fb4a449d9" name="默认变更列表" comment="" />
-      <created>1713342141972</created>
+      <changelist id="e6067b2a-4a77-4a36-9de6-b5b21eb3d7eb" name="默认变更列表" comment="" />
+      <created>1713422627186</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1713342141972</updated>
-      <workItem from="1713342143652" duration="312000" />
-      <workItem from="1713342518625" duration="66000" />
-      <workItem from="1713343832322" duration="17000" />
+      <updated>1713422627186</updated>
+      <workItem from="1713422630808" duration="7627000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
