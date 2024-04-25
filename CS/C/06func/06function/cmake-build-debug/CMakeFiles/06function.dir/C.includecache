@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/GitHub/DevOps-SRE/CS/C/06function/func.h
+stdio.h
+-
+
+D:/GitHub/DevOps-SRE/CS/C/06function/main.c
+func.h
+D:/GitHub/DevOps-SRE/CS/C/06function/func.h
+stdio.h
+-
+

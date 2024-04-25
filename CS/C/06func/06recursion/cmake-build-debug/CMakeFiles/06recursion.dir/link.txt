@@ -1,0 +1,3 @@
+"D:\Program Files\CLion 2021.1.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\06recursion.dir/objects.a
+D:\mingw64\bin\ar.exe cr CMakeFiles\06recursion.dir/objects.a @CMakeFiles\06recursion.dir\objects1.rsp
+D:\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\06recursion.dir/objects.a -Wl,--no-whole-archive -o 06recursion.exe -Wl,--out-implib,lib06recursion.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\06recursion.dir\linklibs.rsp
