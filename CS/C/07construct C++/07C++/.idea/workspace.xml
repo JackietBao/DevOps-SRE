@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="01the_class_of_date_and_input_output_of_date" targetName="01the_class_of_date_and_input_output_of_date" />
+      <config projectName="07C__" targetName="07C__" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -11,7 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc544356-5736-4814-b695-3ea23403037d" name="变更" comment="变更" />
+    <list default="true" id="fa97f8ed-4134-4fb4-b668-38aeeffed5b9" name="变更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,17 +22,9 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="ProjectId" id="2f3N700EMIRHxvYLQGSavaoag5w" />
+  <component name="ProjectId" id="2ffkBlkw0wKN4q0L6Z3ECLL9D9E" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -48,33 +40,31 @@
     <property name="cmake.loaded.for.project" value="true" />
   </component>
   <component name="RunManager">
-    <configuration name="01the_class_of_date_and_input_output_of_date" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="01the_class_of_date_and_input_output_of_date" TARGET_NAME="01the_class_of_date_and_input_output_of_date" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="01the_class_of_date_and_input_output_of_date" RUN_TARGET_NAME="01the_class_of_date_and_input_output_of_date">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="07C__" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="07C__" TARGET_NAME="07C__" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="07C__" RUN_TARGET_NAME="07C__">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
-      <changelist id="cc544356-5736-4814-b695-3ea23403037d" name="变更" comment="" />
-      <created>1713025631505</created>
+      <changelist id="fa97f8ed-4134-4fb4-b668-38aeeffed5b9" name="变更" comment="" />
+      <created>1714199388542</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1713025631505</updated>
-      <workItem from="1713025633387" duration="29000" />
-      <workItem from="1713025677820" duration="23000" />
-      <workItem from="1713025712012" duration="193000" />
-      <workItem from="1713025926158" duration="518000" />
-      <workItem from="1713091938825" duration="49000" />
-      <workItem from="1713092004923" duration="54000" />
-      <workItem from="1713092069355" duration="141000" />
-      <workItem from="1713093265534" duration="1581000" />
-      <workItem from="1713337666381" duration="64000" />
-      <workItem from="1713337743711" duration="16000" />
-      <workItem from="1713339290407" duration="970000" />
-      <workItem from="1713340972087" duration="38000" />
-      <workItem from="1714197577731" duration="23000" />
+      <updated>1714199388542</updated>
+      <workItem from="1714199390444" duration="478000" />
     </task>
     <servers />
   </component>
