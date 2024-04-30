@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="08linear_table_code_practice" targetName="08linear_table_code_practice" />
+      <config projectName="09New_search_for_singly_linked_list" targetName="09New_search_for_singly_linked_list" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -11,7 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad4e9dec-5cd2-4bd8-9960-e4cc900c5060" name="默认变更列表" comment="" />
+    <list default="true" id="80b2595f-9ae0-4490-8996-c7ac2117c9a9" name="默认变更列表" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="ProjectId" id="2fla0dwtyw5r1Vw8zY8pvRFm0Nr" />
+  <component name="ProjectId" id="2foEYLyBNLAjQuArE8cvVMHcblg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -40,7 +40,12 @@
     <property name="cmake.loaded.for.project" value="true" />
   </component>
   <component name="RunManager">
-    <configuration name="08linear_table_code_practice" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="08linear_table_code_practice" TARGET_NAME="08linear_table_code_practice" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="08linear_table_code_practice" RUN_TARGET_NAME="08linear_table_code_practice">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="09New_search_for_singly_linked_list" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="09New_search_for_singly_linked_list" TARGET_NAME="09New_search_for_singly_linked_list" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="09New_search_for_singly_linked_list" RUN_TARGET_NAME="09New_search_for_singly_linked_list">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -54,13 +59,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
-      <changelist id="ad4e9dec-5cd2-4bd8-9960-e4cc900c5060" name="默认变更列表" comment="" />
-      <created>1714377899924</created>
+      <changelist id="80b2595f-9ae0-4490-8996-c7ac2117c9a9" name="默认变更列表" comment="" />
+      <created>1714459081341</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1714377899924</updated>
-      <workItem from="1714377902766" duration="5680000" />
-      <workItem from="1714443102925" duration="84000" />
+      <updated>1714459081341</updated>
+      <workItem from="1714459085363" duration="4912000" />
     </task>
     <servers />
   </component>
