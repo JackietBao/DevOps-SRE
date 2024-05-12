@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/GitHub/DevOps-SRE/CS/C/09New search for singly linked list/main.cpp" "D:/GitHub/DevOps-SRE/CS/C/09New search for singly linked list/cmake-build-debug/CMakeFiles/09New_search_for_singly_linked_list.dir/main.cpp.obj"
+  "D:/Github/DevOps-SRE/CS/C/09New search for singly linked list/main.cpp" "D:/Github/DevOps-SRE/CS/C/09New search for singly linked list/cmake-build-debug/CMakeFiles/09New_search_for_singly_linked_list.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

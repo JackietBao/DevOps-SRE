@@ -11,7 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80b2595f-9ae0-4490-8996-c7ac2117c9a9" name="默认变更列表" comment="" />
+    <list default="true" id="80b2595f-9ae0-4490-8996-c7ac2117c9a9" name="默认变更列表" comment="默认变更列表" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,12 +48,12 @@
     <property name="cmake.loaded.for.project" value="true" />
   </component>
   <component name="RunManager">
-    <configuration name="09New_search_for_singly_linked_list" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="09New_search_for_singly_linked_list" TARGET_NAME="09New_search_for_singly_linked_list" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="09New_search_for_singly_linked_list" RUN_TARGET_NAME="09New_search_for_singly_linked_list">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="09New_search_for_singly_linked_list" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="09New_search_for_singly_linked_list" TARGET_NAME="09New_search_for_singly_linked_list" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="09New_search_for_singly_linked_list" RUN_TARGET_NAME="09New_search_for_singly_linked_list">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -74,6 +74,7 @@
       <updated>1714459081341</updated>
       <workItem from="1714459085363" duration="4912000" />
       <workItem from="1715316858853" duration="4248000" />
+      <workItem from="1715496394106" duration="1079000" />
     </task>
     <servers />
   </component>
