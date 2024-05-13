@@ -1025,29 +1025,29 @@ Harbor作为镜像仓库，主要的交互方式就是将镜像上传到Harbor�
   project_name=$3
   tag=$4
   port=$5
-
+  
   imageName=$harbor_url/$harbor_project_name/$project_name:$tag
-
+  
   containerId=`docker ps -a | grep ${project_name} | awk '{print $1}'`
   if [ "$containerId" != "" ] ; then
       docker stop $containerId
       docker rm $containerId
       echo "Delete Container Success"
   fi
-
+  
   imageId=`docker images | grep ${project_name} | awk '{print $3}'`
-
+  
   if [ "$imageId" != "" ] ; then
       docker rmi -f $imageId
       echo "Delete Image Success"
   fi
-
+  
   docker login -u DevOps -p P@ssw0rd $harbor_url
-
+  
   docker pull $imageName
-
+  
   docker run -d -p $port:$port --name $project_name $imageName
-
+  
   echo "Start Container Success"
   echo $project_name
   ```
@@ -1378,34 +1378,34 @@ pipeline {
           harborUser = 'DevOps'
           harborPasswd = 'P@ssw0rd'
       }
-
+  
       // 存放所有任务的合集
       stages {
-
+  
           stage('拉取Git代码') {
               steps {
                   checkout([$class: 'GitSCM', branches: [[name: '${tag}']], extensions: [], userRemoteConfigs: [[url: 'http://49.233.115.171:8929/root/test.git']]])
               }
           }
-
+  
           stage('构建代码') {
               steps {
                   sh '/var/jenkins_home/maven/bin/mvn clean package -DskipTests'
               }
           }docker
-
+  
           stage('检测代码质量') {
               steps {
                   sh '/var/jenkins_home/sonar-scanner/bin/sonar-scanner -Dsonar.sources=./ -Dsonar.projectname=${JOB_NAME} -Dsonar.projectKey=${JOB_NAME} -Dsonar.java.binaries=target/ -Dsonar.login=7d66af4b39cfe4f52ac0a915d4c9d5c513207098' 
               }
           }
-
+  
           stage('制作自定义镜像并发布Harbor') {
               steps {
                   sh '''cp ./target/*.jar ./docker/
                   cd ./docker
                   docker build -t ${JOB_NAME}:${tag} ./'''
-
+  
                   sh '''docker login -u ${harborUser} -p ${harborPasswd} ${harborHost}
                   docker tag ${JOB_NAME}:${tag} ${harborHost}/${harborRepo}/${JOB_NAME}:${tag}
                   docker push ${harborHost}/${harborRepo}/${JOB_NAME}:${tag}'''
@@ -1659,10 +1659,10 @@ Kubernetes 搭建需要至少两个节点，一个Master负责管理，一个Sla
 
   ```sh
   # 只在 master 节点执行
-
+  
   # 执行如下命令，等待 3-10 分钟，直到所有的容器组处于 Running 状态
   watch kubectl get pod -n kube-system -o wide
-
+  
   # 查看 master 节点初始化结果
   kubectl get nodes -o wide
   ```
@@ -1720,7 +1720,7 @@ kubectl apply -f calico-custom-resources.yaml
   # 替换 apiserver.demo 为初始化 master 节点时所使用的 APISERVER_NAME
   export APISERVER_NAME=apiserver.demo
   echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
-
+  
   # 替换为 master 节点上 kubeadm token create 命令的输出
   kubeadm join apiserver.demo:6443 --token vwfilu.3nhndohc5gn1jv9k     --discovery-token-ca-cert-hash sha256:22ff15cabfe87ab48a7db39b3bbf986fee92ec92eb8efc7fe9b0abe2175ff0c2
   ```
@@ -1818,10 +1818,10 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documen
   ```sh
   # 查看现有的全部命名空间
   kubectl get ns
-
+  
   # 构建命名空间
   kubectl create ns 命名空间名称
-
+  
   # 删除现有命名空间， 并且会删除空间下的全部资源
   kubectl delete ns 命名空间名称
   ```
@@ -1842,25 +1842,25 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documen
     ```bash
     # 查看所有运行的pod
     kubectl get pods -A
-
+    
     # 查看指定Namespace下的Pod
     kubectl get pod [-n 命名空间]  #（默认default）
-
+    
     # 创建Pod
     kubectl run pod名称 --image=镜像名称
-
+    
     # 查看Pod详细信息
     kubectl describe pod pod名称
-
+    
     # 删除pod
     kubectl delete pod pod名称 [-n 命名空间]  #（默认default）
-
+    
     # 查看pod输出的日志
     kubectl logs -f pod名称
-
+    
     # 进去pod容器内部
     kubectl exec -it pod名称 -- bash
-
+    
     # 查看kubernetes给Pod分配的ip信息，并且通过ip和容器的端口，可以直接访问
     kubectl get pod -owide
     ```
@@ -1878,7 +1878,7 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documen
       containers:
       - image: 镜像名称
         name: 容器名称
-
+    
     # 启动Pod：kubectl apply -f yaml文件名称
     # 删除Pod：kubectl delete -f yaml文件名称
     ```
