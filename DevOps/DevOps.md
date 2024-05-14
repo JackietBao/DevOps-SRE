@@ -70,6 +70,12 @@
 
 https://git-scm.com/（傻瓜式安装）
 
+```bash
+yum -y update
+yum -y install git
+git --version
+```
+
 #### 2.2 GitLab安装
 
 单独准备服务器，采用Docker安装
