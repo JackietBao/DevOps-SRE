@@ -76,6 +76,52 @@ yum -y install git
 git --version
 ```
 
+安装docker
+
+```bash
+# 首先，卸载旧版本的Docker（如果有）
+yum -y remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
+
+# 安装依赖包
+yum install -y yum-utils device-mapper-persistent-data lvm2
+
+# 添加Docker官方仓库
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+# 安装Docker CE
+yum install -y docker-ce docker-ce-cli containerd.io
+```
+
+启动并设置docker服务
+
+```
+# 启动Docker服务
+systemctl start docker
+
+# 设置Docker开机自启动
+systemctl enable docker
+
+docker --version
+```
+
+下载docker-compose
+
+```
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+
+授权执行权限
+
+```
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+验证安装
+
+```
+docker-compose --version
+```
+
 #### 2.2 GitLab安装
 
 单独准备服务器，采用Docker安装
@@ -103,7 +149,7 @@ git --version
       restart: always
       environment:
         GITLAB_OMNIBUS_CONFIG: |
-          external_url 'http://192.168.11.11:8929'
+          external_url 'http://服务器IP地址:8929'
           gitlab_rails['gitlab_shell_ssh_port'] = 2224
       ports:
         - '8929:8929'
@@ -149,8 +195,6 @@ git --version
   | ![image-20211124193444561](Pictures/image-20211124193444561.png) |
 
 搞定后，即可像Gitee、GitHub一样使用。
-
-
 
 ### 三、Build阶段工具
 
