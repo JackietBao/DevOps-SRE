@@ -68,6 +68,13 @@
 
 #### 2.1 Git安装
 
+清理缓存
+
+```
+sudo sync
+sudo sh -c "echo 3 > /proc/sys/vm/drop_caches"
+```
+
 https://git-scm.com/（傻瓜式安装）
 
 ```bash
