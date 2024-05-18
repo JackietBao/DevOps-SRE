@@ -1,0 +1,15 @@
+server {
+	listen 80;
+	server_name url.oldxu.com;
+	root /code;
+	default_type text/html;
+	charset utf8,gbk;
+	
+	if ($http_user_agent ~* "ipad|iphone|android"){
+		return 302 http://m.oldxu.com;
+	}
+	
+	location / {
+		index index.html;
+	}
+}

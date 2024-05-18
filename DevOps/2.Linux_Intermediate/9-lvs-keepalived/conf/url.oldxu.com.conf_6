@@ -1,0 +1,25 @@
+server {
+	listen 80;
+	server_name url.oldxu.com;
+	root /code;
+	default_type text/html;
+	charset utf8,gbk;
+	
+
+
+	location / {
+		index index.html;
+
+		if ($http_accept_language ~* "zh|zh-CN") {
+			set $language /zh;
+		}
+
+                if ($http_accept_language ~* "en") {
+                        set $language /en;
+                }
+
+		rewrite ^/$ $language;
+
+	}
+
+}

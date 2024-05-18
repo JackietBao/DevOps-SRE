@@ -1,0 +1,14 @@
+server {
+	listen 80;
+	server_name url.oldxu.com;
+	root /code;
+	default_type text/html;
+	charset utf8,gbk;
+	
+
+
+	location / {
+		rewrite /1.html /2.html permanent;
+	}
+
+}

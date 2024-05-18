@@ -1,0 +1,20 @@
+server {
+	listen 80;
+	server_name url.oldxu.com;
+	root /code;
+	default_type text/html;
+	charset utf8,gbk;
+	
+	set $ip 0;
+	if ($remote_addr ~ "10.0.0.1|10.0.0.8") {
+		set $ip 1;
+	}
+
+	if ($ip = "0") {
+		rewrite ^(.*)$ /wh.html break;
+	}
+
+	location / {
+		index index.html;
+	}
+}
