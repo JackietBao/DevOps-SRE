@@ -211,6 +211,84 @@ docker-compose --version
 
 具体安装Maven流程不做阐述，但是需要确保配置好Maven仓库私服以及JDK编译版本。
 
+```
+安装Maven：
+在CentOS 7上安装Maven可以通过包管理器yum来完成。打开终端，执行以下命令：
+
+bash
+复制代码
+sudo yum install maven
+配置Maven仓库私服：
+如果你有私有的Maven仓库，需要在Maven的配置文件中指定私服地址。编辑Maven的settings.xml文件：
+
+bash
+复制代码
+sudo nano /etc/maven/settings.xml
+找到<mirrors>节点，在其中添加私服的配置，例如：
+
+xml
+复制代码
+<mirror>
+  <id>private-repo</id>
+  <mirrorOf>*</mirrorOf>
+  <url>http://your.private.repo/maven2</url>
+  <blocked>false</blocked>
+  <mirrorOfLayouts>default, p2</mirrorOfLayouts>
+  <timeout>120000</timeout>
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>http://repo.maven.apache.org/maven2</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>central</id>
+      <url>http://repo.maven.apache.org/maven2</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+</mirror>
+注意替换<url>节点中的URL为你私服的地址。
+
+配置JDK编译版本：
+在CentOS 7上安装并配置JDK可以使用OpenJDK。如果你已经安装了JDK，确保配置正确。
+
+bash
+复制代码
+sudo yum install java-1.8.0-openjdk-devel
+安装完成后，你可以通过以下命令来检查Java的安装情况：
+
+bash
+复制代码
+java -version
+确保输出中显示的是你所期望的Java版本。
+
+验证Maven和JDK：
+安装完成后，可以验证Maven和JDK是否成功安装以及配置是否正确。在终端执行以下命令：
+
+bash
+复制代码
+mvn -version
+如果显示了Maven的版本信息，则表示Maven安装成功。同时，也可以使用以下命令验证Java环境是否正确配置：
+
+bash
+复制代码
+java -version
+如果显示了Java的版本信息，则表示Java安装和配置成功。
+```
+
 ### 四、Operate阶段工具
 
 部署过程，会采用Docker进行部署，暂时只安装Docker即可，后续还需安装Kubenetes
@@ -408,6 +486,10 @@ CI/CD可以理解为：
   | ![image-20211124211700999](Pictures/image-20211124211700999.png) |
   | ![image-20211124211720836](Pictures/image-20211124211720836.png) |
 
+```
+查看管理员的密码
+docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+```
 
 #### 5.3 Jenkins入门配置
 
