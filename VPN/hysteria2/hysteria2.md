@@ -1,3 +1,12 @@
+v2rayN 下载：[https://github.com/2dust/v2rayN/releases/latest](https://bulianglin.com/g/aHR0cHM6Ly9naXRodWIuY29tLzJkdXN0L3YycmF5Ti9yZWxlYXNlcy9sYXRlc3Q)
+Hysteria 2下载：[https://github.com/apernet/hysteria/releases](https://bulianglin.com/g/aHR0cHM6Ly9naXRodWIuY29tL2FwZXJuZXQvaHlzdGVyaWEvcmVsZWFzZXM)
+Hysteria 2文档：[https://v2.hysteria.network/zh/](https://bulianglin.com/g/aHR0cHM6Ly92Mi5oeXN0ZXJpYS5uZXR3b3JrL3poLw)
+
+sing-box文档：[https://sing-box.sagernet.org/zh/](https://bulianglin.com/g/aHR0cHM6Ly9zaW5nLWJveC5zYWdlcm5ldC5vcmcvemgv)
+Android客户端（SFA）：[https://install.appcenter.ms/users/nekohasekai/apps/sfa/distribution_groups/publictest](https://bulianglin.com/g/aHR0cHM6Ly9pbnN0YWxsLmFwcGNlbnRlci5tcy91c2Vycy9uZWtvaGFzZWthaS9hcHBzL3NmYS9kaXN0cmlidXRpb25fZ3JvdXBzL3B1YmxpY3Rlc3Q)
+IOS客户端（TestFlight）：[https://testflight.apple.com/join/AcqO44FH](https://bulianglin.com/g/aHR0cHM6Ly90ZXN0ZmxpZ2h0LmFwcGxlLmNvbS9qb2luL0FjcU80NEZI) （1.5.0 beta版支持Hysteria 2）
+IOS客户端（AppStore）：[https://apps.apple.com/us/app/sing-box/id6451272673](https://bulianglin.com/g/aHR0cHM6Ly9hcHBzLmFwcGxlLmNvbS91cy9hcHAvc2luZy1ib3gvaWQ2NDUxMjcyNjcz) （暂不支持Hysteria 2）
+
 ## 服务器相关指令
 
 ```bash
@@ -61,7 +70,7 @@ bandwidth:
   down: 100 mbps
   
 tls:
-  sni: bing
+  sni: bing.com
   insecure: true #使用自签时需要改成true
 
 socks5:
