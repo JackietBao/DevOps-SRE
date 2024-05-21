@@ -176,3 +176,199 @@ http:
   }
 }
 ```
+
+## 网速优化
+
+安装并配置NTP同步时间，以确保系统时间的准确性，有助于优化网络性能：
+
+```
+sudo yum install -y ntp
+sudo systemctl enable ntpd
+sudo systemctl start ntpd
+```
+
+编辑`/etc/resolv.conf`文件，使用快速且可靠的DNS服务器，例如Google DNS或Cloudflare DNS：
+
+```
+nameserver 8.8.8.8
+nameserver 1.1.1.1
+```
+
+Google BBR（Bottleneck Bandwidth and Round-trip propagation time）是一种拥塞控制算法，旨在提高网络传输效率和速度。它通过测量网络瓶颈带宽和往返时间（RTT）来确定发送数据的速率，不依赖于传统的丢包信号。
+
+要在CentOS 7上启用BBR算法，请按以下步骤操作：
+
+检查当前内核版本
+
+BBR需要Linux内核版本4.9或更高版本。可以通过以下命令检查当前内核版本：
+
+```
+bash
+复制代码
+uname -r
+```
+
+如果内核版本低于4.9，需要升级内核。可以参考官方文档或使用ELRepo仓库进行内核升级。
+
+### 升级内核
+
+可以通过ELRepo仓库来升级CentOS 7的内核。以下是具体步骤：
+
+#### 1. 安装ELRepo仓库
+
+```
+bash复制代码sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+sudo yum install -y https://www.elrepo.org/elrepo-release-7.0-4.el7.elrepo.noarch.rpm
+```
+
+#### 2. 安装最新的主线稳定内核
+
+```
+bash
+复制代码
+sudo yum --enablerepo=elrepo-kernel install -y kernel-ml
+```
+
+#### 3. 更新GRUB配置
+
+```
+bash复制代码sudo grub2-set-default 0
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+
+#### 4. 重启服务器
+
+```
+bash
+复制代码
+sudo reboot
+```
+
+#### 5. 验证内核版本
+
+重启后，登录到服务器并验证新的内核版本：
+
+```
+bash
+复制代码
+uname -r
+```
+
+如果内核版本已经更新到4.9或更高版本，接下来可以启用BBR。
+
+### 启用BBR
+
+按以下步骤操作：
+
+1. **编辑sysctl配置文件** 打开`/etc/sysctl.conf`文件，添加以下行：
+
+   ```
+   bash复制代码net.core.default_qdisc=fq
+   net.ipv4.tcp_congestion_control=bbr
+   ```
+
+2. **应用更改** 运行以下命令以应用更改：
+
+   ```
+   bash
+   复制代码
+   sudo sysctl -p
+   ```
+
+3. **验证BBR是否启用** 使用以下命令验证BBR是否已启用：
+
+   ```
+   bash
+   复制代码
+   sysctl net.ipv4.tcp_congestion_control
+   ```
+
+   预期输出应该是：
+
+   ```
+   bash
+   复制代码
+   net.ipv4.tcp_congestion_control = bbr
+   ```
+
+   然后使用以下命令检查BBR是否正在运行：
+
+   ```
+   bash
+   复制代码
+   lsmod | grep bbr
+   ```
+
+   如果BBR已启用并运行，你将看到类似以下的输出：
+
+   ```
+   bash
+   复制代码
+   tcp_bbr                20480  12
+   ```
+
+### Hysteria配置文件优化
+
+```
+tls:
+  cert: /etc/hysteria/server.crt
+  key: /etc/hysteria/server.key
+
+auth:
+  type: password
+  password: 123456
+  
+masquerade:
+  type: proxy
+  proxy:
+    url: https://bing.com
+    rewriteHost: true
+
+# 优化Hysteria配置
+server:
+  listen: :443
+  protocol: udp
+  obfs:
+    type: basic
+    password: "your_obfs_password"  # 替换为你自己的混淆密码
+  udp:
+    timeout: 30s
+  congestion:
+    enable: true
+    minRTT: 10ms
+    lossThreshold: 0.01
+    gain: 1.25
+    maxGain: 2.5
+  conn:
+    maxConnections: 10
+
+# 调整TCP/IP参数
+sysctl:
+  net.core.rmem_max: 16777216
+  net.core.wmem_max: 16777216
+  net.ipv4.tcp_rmem: 4096 87380 16777216
+  net.ipv4.tcp_wmem: 4096 65536 16777216
+  net.core.somaxconn: 4096
+  net.ipv4.tcp_tw_reuse: 1
+  net.core.default_qdisc: fq
+  net.ipv4.tcp_congestion_control: bbr
+  net.core.netdev_max_backlog: 5000
+```
+
+### 应用和验证
+
+1. **确保系统参数生效** 确保你之前设置的TCP/IP参数已经生效：
+
+   ```
+   bash
+   复制代码
+   sudo sysctl -p
+   ```
+
+2. **重启Hysteria服务** 重新启动Hysteria服务以应用新的配置：
+
+   ```
+   bash
+   复制代码
+   sudo systemctl restart hysteria-server
+   ```
