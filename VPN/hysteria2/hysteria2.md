@@ -217,30 +217,26 @@ uname -r
 #### 1. 安装ELRepo仓库
 
 ```
-bash复制代码sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 sudo yum install -y https://www.elrepo.org/elrepo-release-7.0-4.el7.elrepo.noarch.rpm
 ```
 
 #### 2. 安装最新的主线稳定内核
 
 ```
-bash
-复制代码
 sudo yum --enablerepo=elrepo-kernel install -y kernel-ml
 ```
 
 #### 3. 更新GRUB配置
 
 ```
-bash复制代码sudo grub2-set-default 0
+sudo grub2-set-default 0
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
 #### 4. 重启服务器
 
 ```
-bash
-复制代码
 sudo reboot
 ```
 
@@ -249,8 +245,6 @@ sudo reboot
 重启后，登录到服务器并验证新的内核版本：
 
 ```
-bash
-复制代码
 uname -r
 ```
 
@@ -263,47 +257,37 @@ uname -r
 1. **编辑sysctl配置文件** 打开`/etc/sysctl.conf`文件，添加以下行：
 
    ```
-   bash复制代码net.core.default_qdisc=fq
+   net.core.default_qdisc=fq
    net.ipv4.tcp_congestion_control=bbr
    ```
 
 2. **应用更改** 运行以下命令以应用更改：
 
    ```
-   bash
-   复制代码
    sudo sysctl -p
    ```
-
+   
 3. **验证BBR是否启用** 使用以下命令验证BBR是否已启用：
 
    ```
-   bash
-   复制代码
    sysctl net.ipv4.tcp_congestion_control
    ```
-
+   
    预期输出应该是：
 
    ```
-   bash
-   复制代码
    net.ipv4.tcp_congestion_control = bbr
    ```
-
+   
    然后使用以下命令检查BBR是否正在运行：
-
+   
    ```
-   bash
-   复制代码
    lsmod | grep bbr
    ```
 
    如果BBR已启用并运行，你将看到类似以下的输出：
-
+   
    ```
-   bash
-   复制代码
    tcp_bbr                20480  12
    ```
 
@@ -360,15 +344,24 @@ sysctl:
 1. **确保系统参数生效** 确保你之前设置的TCP/IP参数已经生效：
 
    ```
-   bash
-   复制代码
    sudo sysctl -p
    ```
-
+   
 2. **重启Hysteria服务** 重新启动Hysteria服务以应用新的配置：
 
    ```
-   bash
-   复制代码
    sudo systemctl restart hysteria-server
    ```
+
+## udp优化
+
+vi /etc/sysctl.conf
+
+```
+net.core.rmem_max=26214400
+net.core.wmem_max=26214400
+net.ipv4.udp_mem=26214400 26214400 26214400
+net.ipv4.udp_rmem_min=26214400
+net.ipv4.udp_wmem_min=26214400
+```
+
