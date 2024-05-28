@@ -2053,6 +2053,9 @@ docker build -t jenkins:1.3 . -f ./Dockerfile_jenkins
 docker run -itd --name jenkins3 -p 8082:8080 jenkins:1.3
 
 docker exec -it jenkins3 /bin/bash
+
+#@@@@@版本选择
+apache-tomcat-8.5.47.tar.gz  jdk-8u211-linux-x64.tar.gz  jenkins.war(2.277.4)
 ```
 
 ![img](assets/Docker/image-20200726134658934.png)
@@ -2119,28 +2122,20 @@ docker build -t nginx:1.23.4 .
 **扩展----CMD与ENTRYPOINT区别**
 
 ```shell
-一、Dockerfile中的CMD
+在Docker中，CMD和ENTRYPOINT是用来定义容器启动时执行的命令的两个关键指令，它们有一些重要的区别：
 
-1、每个Dockerfile中只能有一个CMD如果有多个那么只执行最后一个。
-2、CMD 相当于启动docker时候后面添加的参数看，举个简单例子：
-# docker run -itd --name test image(镜像) /bin/bash -c
-a、镜像名称后面跟了一个/bin/bash -c ，其实等价于在dockerfile中的CMD ["/bin/bash","-c"]。
-b、如果dockerfile中的CMD中有了CMD["/bin/bash","-c"],那么就不用在执行的时候再添加了，如果添加了参数的话那么就相当于要执行你添加的参数，默认的CMD中的参数就无效了。
-
-二、Dockerfile中的ENTRYPOINT
-1、一个Dockerfile中ENTRYPOINT也只能存在一个，若存在多个那么只执行最后一个，你可以理解为开机启动的意思，和CMD有点像，不过还是有区别。
-
-2、举个简单例子：
-a、Dockerfile中有ENTRYPOINT ["tail","-f","/var/log/nginx/access.log"]，那么启动的时候镜像就执行了这个里面的内容，如果你像上面带参数的话就相当于在这个执行的内容后面再加入参数。
-案例:
-如果我们的dockerfile中有a中的这句话然后我们启动我们的docker:
-# docker run -itd --name test image(镜像名) /bin/bash -c
-
-此时就相当于我们启动docker的时候执行了：tail -f /var/log/nginx/access.log /bin/bash -c
-这个命令明显就不对.
+CMD：CMD指令用于指定容器启动后默认执行的命令。它可以在 Dockerfile 中出现多次，但只有最后一条 CMD 指令会生效。CMD指令的参数可以被 Docker run 命令的参数覆盖。如果 Docker run 命令提供了参数，则这些参数会替换掉 Dockerfile 中 CMD 指令定义的参数。
+Dockerfile
+复制代码
+CMD ["executable", "param1", "param2"]
+ENTRYPOINT：ENTRYPOINT指令用于指定容器启动时执行的可执行文件或脚本。与CMD不同的是，ENTRYPOINT指令指定的命令不会被 Docker run 命令的参数覆盖，而是作为命令的前缀。如果 Docker run 命令提供了参数，则这些参数会作为 ENTRYPOINT 指定的命令的参数。
+Dockerfile
+复制代码
+ENTRYPOINT ["executable", "param1", "param2"]
+通常情况下，CMD用于指定容器的默认行为，而ENTRYPOINT用于指定容器的主要可执行程序或脚本。在使用ENTRYPOINT时，可以使用CMD来提供默认参数，从而使容器在不同情况下具有更大的灵活性。
 ```
 
-参考链接：https://blog.csdn.net/k_520_w/article/details/111731198
+
 
 
 
