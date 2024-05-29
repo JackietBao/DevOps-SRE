@@ -169,7 +169,7 @@ docker-compose up -d nginx-demo
 #### 查看启动的容器
 
 ```
-dockerps
+docker ps
 ```
 
 但是发现启动的容器没进行80端口的暴露，所以在yml文件里面加入端口暴露![image-20231207165411072](assets/安装Docker-Compose/image-20231207165411072_repeat_1701939253240__947168.png)
@@ -187,7 +187,7 @@ docker-compose up -d nginx-demo
 #### 停止容器
 
 ```
-docker-composr stop nginx-demo
+docker-compose stop nginx-demo
 ```
 
 ![image-20231207170142609](assets/安装Docker-Compose/image-20231207170142609_repeat_1701939704880__833077.png)

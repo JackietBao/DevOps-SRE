@@ -22,6 +22,104 @@ hostname: 192.168.246.166
 如果安装失败，重启docker服务，重新安装即可；
 ```
 
+您需要将Docker升级到版本17.06.0或更高版本。以下是升级Docker的步骤：
+
+1. **卸载旧版本的Docker**（如果已安装）：
+
+   ```
+   sh
+   复制代码
+   sudo yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
+   ```
+
+2. **设置Docker仓库**：
+
+   ```
+   sh复制代码sudo yum install -y yum-utils
+   sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+   ```
+
+3. **安装最新版本的Docker**：
+
+   ```
+   sh
+   复制代码
+   sudo yum install docker-ce docker-ce-cli containerd.io
+   ```
+
+4. **启动Docker并设置为开机启动**：
+
+   ```
+   sh复制代码sudo systemctl start docker
+   sudo systemctl enable docker
+   ```
+
+5. **验证Docker版本**：
+
+   ```
+   sh
+   复制代码
+   docker --version
+   ```
+
+   确保输出的版本是17.06.0或更高。
+
+6. **重新运行Harbor安装脚本**：
+
+   ```
+   sh复制代码cd /path/to/harbor
+   ./install.sh
+   ```
+
+如果仍有问题，请确保您的系统已连接到互联网以便从Docker仓库下载最新的软件包，并且您的系统时间和日期设置正确以避免SSL/TLS证书问题。如果升级过程中遇到任何错误，请提供错误信息以便进一步排查。
+
+
+
+
+
+根据提示信息，您需要安装或升级`docker-compose`到1.18.0或更高版本。以下是安装`docker-compose`的步骤：
+
+1. **下载并安装最新版本的`docker-compose`**：
+
+   ```
+   sh
+   复制代码
+   sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+   ```
+
+2. **赋予执行权限**：
+
+   ```
+   sh
+   复制代码
+   sudo chmod +x /usr/local/bin/docker-compose
+   ```
+
+3. **验证`docker-compose`版本**：
+
+   ```
+   sh
+   复制代码
+   docker-compose --version
+   ```
+
+   确保输出的版本是1.18.0或更高。
+
+4. **重新运行Harbor安装脚本**：
+
+   ```
+   sh复制代码cd /path/to/harbor
+   ./install.sh
+   ```
+
+如果遇到任何问题，请提供具体的错误信息，我可以帮助您进一步排查。
+
+
+
+
+
+
+
 
 
 ![img](assets/Harbor/1666617938259-d5d5741e-06f2-4438-a4be-08019951bc0a.png)
