@@ -2262,7 +2262,10 @@ tcp        0      0 :::5000                 :::*                    LISTEN      
 Get https://master.up.com:5000/v1/_ping: http: server gave HTTP response to HTTPS client
 
 [root@docker-server ~]# vim /etc/docker/daemon.json    #不存在则创建
-{ "insecure-registries":["192.168.246.141:5000"] }
+{
+  "registry-mirrors": ["https://ukblsmil.mirror.aliyuncs.com"],
+  "insecure-registries": ["192.168.77.129:5000"]
+}
 ```
 
 
@@ -2724,7 +2727,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 MySQL [(none)]>
 ```
 
-
+![image-20240529132657044](assets/Docker/image-20240529132657044.png)
 
 ```shell
 -P（大P）:当使用-P标记时，Docker 会随机映射一个 32768~49900 的端口到内部容器开放的网络端口。如下：
