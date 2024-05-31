@@ -1,3 +1,0 @@
-D:/GitHub/DevOps-SRE/CS/C/06func/homework/cmake-build-debug/CMakeFiles/homework.dir
-D:/GitHub/DevOps-SRE/CS/C/06func/homework/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/GitHub/DevOps-SRE/CS/C/06func/homework/cmake-build-debug/CMakeFiles/rebuild_cache.dir

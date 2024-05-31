@@ -1,3 +1,0 @@
-"D:\SoftWare\JetBrains\CLion 2021.1.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\09New_search_for_singly_linked_list.dir/objects.a
-D:\Lang\mingw64\bin\ar.exe cr CMakeFiles\09New_search_for_singly_linked_list.dir/objects.a @CMakeFiles\09New_search_for_singly_linked_list.dir\objects1.rsp
-D:\Lang\mingw64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\09New_search_for_singly_linked_list.dir/objects.a -Wl,--no-whole-archive -o 09New_search_for_singly_linked_list.exe -Wl,--out-implib,lib09New_search_for_singly_linked_list.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\09New_search_for_singly_linked_list.dir\linklibs.rsp

@@ -1,3 +1,0 @@
-D:/GitHub/DevOps-SRE/CS/C/02Operators and expressions/cmake-build-debug/CMakeFiles/02Operators_and_expressions.dir
-D:/GitHub/DevOps-SRE/CS/C/02Operators and expressions/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/GitHub/DevOps-SRE/CS/C/02Operators and expressions/cmake-build-debug/CMakeFiles/rebuild_cache.dir

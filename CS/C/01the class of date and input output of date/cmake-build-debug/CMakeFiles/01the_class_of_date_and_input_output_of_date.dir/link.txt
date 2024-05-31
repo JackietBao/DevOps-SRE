@@ -1,3 +1,0 @@
-"D:\Program Files\CLion 2021.1.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\01the_class_of_date_and_input_output_of_date.dir/objects.a
-D:\mingw64\bin\ar.exe cr CMakeFiles\01the_class_of_date_and_input_output_of_date.dir/objects.a @CMakeFiles\01the_class_of_date_and_input_output_of_date.dir\objects1.rsp
-D:\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\01the_class_of_date_and_input_output_of_date.dir/objects.a -Wl,--no-whole-archive -o 01the_class_of_date_and_input_output_of_date.exe -Wl,--out-implib,lib01the_class_of_date_and_input_output_of_date.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\01the_class_of_date_and_input_output_of_date.dir\linklibs.rsp
