@@ -1,0 +1,28 @@
+#!/bin/bash
+date=$(date "+%Y-%m-%d %H:%M:%S")
+webhook='飞书机器人地址'
+
+send_message() {
+        local message="$1"
+    curl -s "$webhook" \
+        -H "Content-Type: application/json" \
+        -d '{
+            "msg_type": "text",
+            "content": {
+                "text": "'"$message"'"
+            }
+        }'
+}
+
+ports=(想要监听的端口)
+for port in ${ports[@]}
+do
+        nc -zv localhost "$port" >/dev/null 2>&1
+        if [ $? -eq 0 ]; then
+        echo "端口 $port 是存活的$date"
+else
+		#自定义消息内容
+        message="服务器在$date 时间 $ports 端口异常，请及时检查!!!"
+        send_message "$message"
+    fi
+done
