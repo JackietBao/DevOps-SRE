@@ -23,7 +23,7 @@ ILM其实就是通过策略触发索引管理动作完成上述节点的管理�
 
 
 
-1.  滚动索引(Rollover)：当前索引到达一定的大小、文档数量、年龄后触发创建新的索引来替代 
+1.  xxxxxxxxxx cgexec -g cpu:CPU50_Nginx_Grouop systemctl start nginxshell
 2.  缩容(Shrink)：降低索引的主分片的数量提升查询性能 
 3.  合并(Force Merge)：通过强制合并，降低索引分片中的段的数量 
 4.  冻结(Freeze)：通过设置索引只读来冻结索引 
