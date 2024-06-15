@@ -27,7 +27,7 @@
 ### 4、命令使用
 
 ```shell
-[root@qfedu.com ~]# ab -n1000 -c 10 http://www.baidu.com # -n访问1000次, -c并发10个
+[root@qfedu.com ~]# ab -n 1000 -c 10 http://www.baidu.com # -n访问1000次, -c并发10个
 ```
 
 - 更多使用方法详见 [ab 官方文档](https://links.jianshu.com/go?to=http%3A%2F%2Fhttpd.apache.org%2Fdocs%2F2.0%2Fprograms%2Fab.html)
