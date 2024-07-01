@@ -157,3 +157,20 @@ Kali２０２０.２以root权限执行
 
 
 https://blog.csdn.net/Fengfeng__y/article/details/107390413
+
+# 四、配置静态ip
+
+> /etc/network
+>
+> systemctl restart networking
+
+```
+auto eth0
+iface eth0 inet static
+    address 192.168.77.200
+    netmask 255.255.255.0
+    gateway 10.0.0.254
+    dns-nameservers 223.5.5.5 202.106.0.20
+    hwaddress ether 00:0C:29:80:CF:78
+```
+
