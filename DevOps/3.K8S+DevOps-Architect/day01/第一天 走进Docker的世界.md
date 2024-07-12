@@ -248,7 +248,6 @@ systemctl status containerd
   
   ```powershell
      $ docker run --name my-nginx-ubuntu -d my-nginx:ubuntu
-     
   ```
   
 - 进入容器查看进程
