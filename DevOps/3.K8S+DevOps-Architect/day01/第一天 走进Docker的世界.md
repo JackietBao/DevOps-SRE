@@ -642,24 +642,29 @@ Dockerfile是一堆指令，在docker build的时候，按照该指令进行操�
   ```dockerfile
   FROM java:8-alpine
   
-  RUN apk add --update ca-certificates && rm -rf /var/cache/apk/* && \
-    find /usr/share/ca-certificates/mozilla/ -name "*.crt" -exec keytool -import -trustcacerts \
+  # 安装必要的软件包
+  RUN apk add --update ca-certificates curl openssl && rm -rf /var/cache/apk/*
+  
+  # 导入证书
+  RUN find /usr/share/ca-certificates/mozilla/ -name "*.crt" -exec keytool -import -trustcacerts \
     -keystore /usr/lib/jvm/java-1.8-openjdk/jre/lib/security/cacerts -storepass changeit -noprompt \
     -file {} -alias {} \; && \
     keytool -list -keystore /usr/lib/jvm/java-1.8-openjdk/jre/lib/security/cacerts --storepass changeit
   
-  ENV MAVEN_VERSION 3.5.4
-  ENV MAVEN_HOME /usr/lib/mvn
-  ENV PATH $MAVEN_HOME/bin:$PATH
+  # 设置Maven版本和环境变量
+  ENV MAVEN_VERSION=3.5.4
+  ENV MAVEN_HOME=/usr/lib/mvn
+  ENV PATH=${MAVEN_HOME}/bin:${PATH}
   
-  RUN wget http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz && \
-    tar -zxvf apache-maven-$MAVEN_VERSION-bin.tar.gz && \
-    rm apache-maven-$MAVEN_VERSION-bin.tar.gz && \
-    mv apache-maven-$MAVEN_VERSION /usr/lib/mvn
+  # 下载和安装Maven
+  RUN curl -fSL http://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz -o apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
+    tar -zxvf apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
+    rm apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
+    mv apache-maven-${MAVEN_VERSION} ${MAVEN_HOME}
   
+  # 创建工作目录
   RUN mkdir -p /usr/src/app
   WORKDIR /usr/src/app
-  
   ```
 
 - 前端镜像
@@ -831,7 +836,7 @@ ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
 #RUN 执行以下命令
-RUN curl -so /etc/yum.repos.d/Centos-7.repo http://mirrors.aliyun.com/repo/Centos-7.repo && rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+RUN curl -so /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo && curl -s -o /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo && rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 RUN yum install -y  python36 python3-devel gcc pcre-devel zlib-devel make net-tools nginx
 
 #工作目录
