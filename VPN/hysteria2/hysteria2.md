@@ -131,8 +131,8 @@ http:
       "tag": "proxy",
       "server": "192.253.238.52",
       "server_port": 443,
-      "up_mbps": 20,
-      "down_mbps": 90,
+      "up_mbps": 5,
+      "down_mbps": 5,
       "password": "123456",
       "tls": {
         "enabled": true,
@@ -353,15 +353,35 @@ sysctl:
    sudo systemctl restart hysteria-server
    ```
 
-## udp优化
+## 系统缓冲区大小
 
 vi /etc/sysctl.conf
 
 ```
-net.core.rmem_max=26214400
-net.core.wmem_max=26214400
-net.ipv4.udp_mem=26214400 26214400 26214400
-net.ipv4.udp_rmem_min=26214400
-net.ipv4.udp_wmem_min=26214400
+net.core.rmem_max=1048576
+net.core.wmem_max=1048576
+```
+
+## 进程优先级
+
+在 CPU 资源紧缺的设备上， 高负载下可能会出现延迟抖动， 可通过提高进程优先级来缓解。
+
+### 通过 systemd
+
+适用于 Linux。
+
+创建 `/etc/systemd/system/hysteria-server.service.d/priority.conf` 并填入以下内容。
+
+```
+[Service]
+CPUSchedulingPolicy=rr
+CPUSchedulingPriority=99
+```
+
+使用以下命令重载 systemd 配置文件并重启服务。
+
+```
+systemctl daemon-reload
+systemctl restart hysteria-server.service
 ```
 
