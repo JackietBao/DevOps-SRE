@@ -1,0 +1,30 @@
+listen: :443
+
+tls:
+  cert: /nginxweb/cert/server_fullchain.cert
+  key: /nginxweb/cert/server.key
+
+auth:
+  type: password
+  password: pepe1D0ntKn0XX
+
+masquerade:
+  type: proxy
+  proxy:
+    url: https://old.ttxn.com/
+    rewriteHost: true
+
+quic:
+  initStreamReceiveWindow: 8388608
+  maxStreamReceiveWindow: 8388608
+  initConnReceiveWindow: 20971520
+  maxConnReceiveWindow: 20971520
+  maxIdleTimeout: 30s
+  maxIncomingStreams: 1024
+  disablePathMTUDiscovery: false
+  
+disableUDP: false
+
+udpIdleTimeout: 60s
+
+ignoreClientBandwidth: false
