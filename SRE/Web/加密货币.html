@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoTrade Pro - 登录</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: linear-gradient(to bottom right, #111827, #000000);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .container {
+            max-width: 28rem;
+            width: 100%;
+            background-color: #1f2937;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo i {
+            font-size: 3.75rem;
+            color: #f59e0b;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        h2 {
+            color: white;
+            text-align: center;
+            font-size: 1.875rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            background-color: #374151;
+            border: 1px solid #4b5563;
+            border-radius: 0.5rem;
+            color: white;
+            outline: none;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #f59e0b;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            color: #d1d5db;
+        }
+
+        .remember-me input {
+            margin-right: 0.5rem;
+        }
+
+        .forgot-password {
+            color: #f59e0b;
+            text-decoration: none;
+        }
+
+        .forgot-password:hover {
+            color: #f59e0b;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #f59e0b;
+            color: black;
+            font-weight: bold;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #fbbf24;
+        }
+
+        .signup {
+            margin-top: 1.5rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        .signup a {
+            color: #f59e0b;
+            text-decoration: none;
+        }
+
+        .signup a:hover {
+            color: #fbbf24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <i class="fab fa-bitcoin"></i>
+        </div>
+        
+        <h2>CryptoTrade Pro</h2>
+        
+        <form>
+            <div class="form-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" placeholder="电子邮箱" required>
+            </div>
+            
+            <div class="form-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="密码" required>
+            </div>
+            
+            <div class="form-options">
+                <label class="remember-me">
+                    <input type="checkbox">
+                    记住我
+                </label>
+                <a href="#" class="forgot-password">忘记密码?</a>
+            </div>
+            
+            <button type="submit">登录</button>
+        </form>
+        
+        <div class="signup">
+            还没有账号? <a href="#">立即注册</a>
+        </div>
+    </div>
+</body>
+</html> 
