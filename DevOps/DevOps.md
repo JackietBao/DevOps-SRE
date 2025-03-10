@@ -148,23 +148,24 @@ docker-compose --version
 - 准备docker-compose.yml文件
 
   ```yml
-  version: '3.1'
-  services:
-    gitlab:
-      image: 'gitlab/gitlab-ce:latest'
-      container_name: gitlab
-      restart: always
-      environment:
-        GITLAB_OMNIBUS_CONFIG: |
-          external_url 'http://服务器IP地址:8929'
-          gitlab_rails['gitlab_shell_ssh_port'] = 2224
-      ports:
-        - '8929:8929'
-        - '2224:2224'
-      volumes:
-        - './config:/etc/gitlab'
-        - './logs:/var/log/gitlab'
-        - './data:/var/opt/gitlab'
+  version: '3.1'  # 指定 Docker Compose 文件的版本
+  
+  services:  # 定义服务
+    gitlab:  # 服务名称为 gitlab
+      image: 'gitlab/gitlab-ce:latest'  # 使用 GitLab 社区版的最新镜像
+      container_name: gitlab  # 指定容器的名称为 gitlab
+      restart: always  # 容器在退出时总是重启
+      environment:  # 设置环境变量
+        GITLAB_OMNIBUS_CONFIG: |  # GitLab 的配置
+          external_url 'http://192.168.232.160:8929'  # GitLab 的外部访问 URL
+          gitlab_rails['gitlab_shell_ssh_port'] = 2224  # SSH 端口配置
+      ports:  # 映射端口
+        - '8929:8929'  # 将主机的 8929 端口映射到容器的 8929 端口
+        - '2224:2224'  # 将主机的 2224 端口映射到容器的 2224 端口
+      volumes:  # 持久化数据的卷
+        - './config:/etc/gitlab'  # 将主机的 ./config 目录挂载到容器的 /etc/gitlab 目录
+        - './logs:/var/log/gitlab'  # 将主机的 ./logs 目录挂载到容器的 /var/log/gitlab 目录
+        - './data:/var/opt/gitlab'  # 将主机的 ./data 目录挂载到容器的 /var/opt/gitlab 目录
   ```
 
 - 启动容器（需要稍等一小会……）
