@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout :: head(~{::title})">
+    <title>首页 - 博客系统</title>
+</head>
+<body>
+    <div th:replace="layout :: main(~{::title}, ~{::#content})">
+        <div id="content">
+            <h1 class="mb-4">最新文章</h1>
+            
+            <div th:if="${posts.empty}" class="alert alert-info">
+                暂无文章，请<a th:href="@{/posts/new}" sec:authorize="isAuthenticated()">发布</a>
+                <span sec:authorize="!isAuthenticated()">登录后发布</span>
+            </div>
+            
+            <div class="card mb-3" th:each="post : ${posts}">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <a th:href="@{/posts/{id}(id=${post.id})}" th:text="${post.title}"></a>
+                    </h2>
+                    <p class="card-text text-muted">
+                        <small>
+                            作者: <span th:text="${post.author.username}"></span> | 
+                            发布时间: <span th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}"></span>
+                            <span th:if="${post.updatedAt != null}">
+                                | 更新时间: <span th:text="${#temporals.format(post.updatedAt, 'yyyy-MM-dd HH:mm')}"></span>
+                            </span>
+                        </small>
+                    </p>
+                    <p class="card-text" th:text="${#strings.abbreviate(post.content, 200)}"></p>
+                    <a th:href="@{/posts/{id}(id=${post.id})}" class="btn btn-primary btn-sm">阅读全文</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
