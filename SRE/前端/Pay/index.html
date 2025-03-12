@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>支付页面</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Select Payment Method</h2>
+        
+        <div class="payment-methods">
+            <div class="payment-option credit-card active" id="credit-card-option">
+                <div class="option-content">
+                    <span>Credit Card</span>
+                    <div class="card-icons">
+                        <i class="fab fa-cc-amex card-icon amex"></i>
+                        <i class="fab fa-cc-mastercard card-icon mastercard"></i>
+                        <i class="fab fa-cc-visa card-icon visa"></i>
+                        <i class="fab fa-cc-discover card-icon discover"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-option paypal" id="paypal-option">
+                <div class="option-content">
+                    <span>PayPal</span>
+                    <i class="fab fa-paypal paypal-icon"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="payment-forms">
+            <div class="credit-card-form" id="credit-card-form">
+                <div class="form-row">
+                    <div class="form-group card-type">
+                        <label for="card-type">
+                            <i class="far fa-credit-card card-type-icon"></i>
+                            <span>Card</span>
+                        </label>
+                    </div>
+                    <div class="form-group apple-pay">
+                        <label for="apple-pay">
+                            <i class="fab fa-apple apple-pay-icon"></i>
+                            <span>Apple Pay</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group card-number-group">
+                        <label for="card-number">Card number</label>
+                        <div class="card-number-input-container">
+                            <input type="text" id="card-number" placeholder="1234 1234 1234 1234" maxlength="19">
+                            <div class="card-icons-small">
+                                <i class="fab fa-cc-visa card-icon-small visa"></i>
+                                <i class="fab fa-cc-mastercard card-icon-small mastercard"></i>
+                                <i class="fab fa-cc-amex card-icon-small amex"></i>
+                                <i class="fab fa-cc-discover card-icon-small discover"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group expiration-group">
+                        <label for="expiration">Expiration</label>
+                        <input type="text" id="expiration" placeholder="MM / YY" maxlength="7">
+                    </div>
+                    <div class="form-group cvc-group">
+                        <label for="cvc">CVC</label>
+                        <div class="cvc-input-container">
+                            <input type="text" id="cvc" placeholder="CVC" maxlength="4">
+                            <i class="far fa-question-circle cvc-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="terms-text">
+                    By providing your card information, you allow WP Simple Pay to charge your card for future payments in accordance with their terms.
+                </p>
+                
+                <div class="save-info-container">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="save-info">
+                        <label for="save-info">
+                            <span class="checkbox-custom"></span>
+                            <span class="checkbox-label">Save your info for secure 1-click checkout with Link</span>
+                        </label>
+                    </div>
+                    <p class="link-info">Pay faster at WP Simple Pay and everywhere Link is accepted.</p>
+                    <div class="learn-more">
+                        <span class="link-text">link</span>
+                        <span class="separator">•</span>
+                        <a href="#" class="learn-more-link">Learn more</a>
+                    </div>
+                </div>
+                
+                <div class="secure-payment">
+                    <i class="fas fa-lock secure-icon"></i>
+                    <span>Secure Payments by</span>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" class="stripe-icon">
+                </div>
+            </div>
+            
+            <div class="paypal-form hidden" id="paypal-form">
+                <p>PayPal 支付表单将在这里显示</p>
+            </div>
+        </div>
+        
+        <button class="checkout-button">Complete Checkout</button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
