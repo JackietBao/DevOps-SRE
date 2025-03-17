@@ -36,7 +36,7 @@ public class PostController {
     @PostMapping("/new")
     public String createPost(@ModelAttribute Post post, RedirectAttributes redirectAttributes) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = userService.findUserByUsername(auth.getName()).orElseThrow();
+        User currentUser = userService.findUserByUsername(auth.getName()).orElseThrow(() -> new IllegalArgumentException("找不到对应的记录"));
         
         post.setAuthor(currentUser);
         post.setCreatedAt(LocalDateTime.now());
@@ -48,17 +48,17 @@ public class PostController {
 
     @GetMapping("/{id}")
     public String showPost(@PathVariable Long id, Model model) {
-        Post post = postService.findPostById(id).orElseThrow();
+        Post post = postService.findPostById(id).orElseThrow(() -> new IllegalArgumentException("找不到对应的记录"));
         model.addAttribute("post", post);
         return "post-detail";
     }
 
     @GetMapping("/{id}/edit")
     public String showEditForm(@PathVariable Long id, Model model) {
-        Post post = postService.findPostById(id).orElseThrow();
+        Post post = postService.findPostById(id).orElseThrow(() -> new IllegalArgumentException("找不到对应的记录"));
         
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = userService.findUserByUsername(auth.getName()).orElseThrow();
+        User currentUser = userService.findUserByUsername(auth.getName()).orElseThrow(() -> new IllegalArgumentException("找不到对应的记录"));
         
         if (!post.getAuthor().getId().equals(currentUser.getId())) {
             return "redirect:/";
@@ -70,10 +70,10 @@ public class PostController {
 
     @PostMapping("/{id}/edit")
     public String updatePost(@PathVariable Long id, @ModelAttribute Post post, RedirectAttributes redirectAttributes) {
-        Post existingPost = postService.findPostById(id).orElseThrow();
+        Post existingPost = postService.findPostById(id).orElseThrow(() -> new IllegalArgumentException("找不到对应的记录"));
         
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = userService.findUserByUsername(auth.getName()).orElseThrow();
+        User currentUser = userService.findUserByUsername(auth.getName()).orElseThrow(() -> new IllegalArgumentException("找不到对应的记录"));
         
         if (!existingPost.getAuthor().getId().equals(currentUser.getId())) {
             return "redirect:/";
@@ -90,10 +90,10 @@ public class PostController {
 
     @PostMapping("/{id}/delete")
     public String deletePost(@PathVariable Long id, RedirectAttributes redirectAttributes) {
-        Post post = postService.findPostById(id).orElseThrow();
+        Post post = postService.findPostById(id).orElseThrow(() -> new IllegalArgumentException("找不到对应的记录"));
         
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = userService.findUserByUsername(auth.getName()).orElseThrow();
+        User currentUser = userService.findUserByUsername(auth.getName()).orElseThrow(() -> new IllegalArgumentException("找不到对应的记录"));
         
         if (!post.getAuthor().getId().equals(currentUser.getId())) {
             return "redirect:/";
