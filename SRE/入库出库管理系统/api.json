@@ -1,4 +1,97 @@
-curl -X GET -H "Content-Type: application/json" -d '{
-    "batchId": "24B0256",
-    "processType": "storage"
-}' "http://192.168.232.153:3000/api/process"
+POST提交数据
+严格按照“入库 -> 贴膜 -> 切割 -> 检验 -> 出货”的顺序进行数据校验
+    1、记录入库批次操作
+    curl -X POST -H "Content-Type: application/json" -d '{
+        "batchId": "",
+        "processType": "storage"
+    }' "http://ip地址/api/process"
+    例如：
+          {
+            "batchId": "24B0256",
+            "processType": "storage"
+          }
+
+    2、记录贴膜批次操作
+    curl -X POST -H "Content-Type: application/json" -d '{
+        "batchId": "",
+        "processType": "film"
+    }' "http://ip地址/api/process"
+    例如：
+          {
+            "batchId": "24B0256",
+            "processType": "film"
+          }          
+    3、记录切割批次操作
+    curl -X POST -H "Content-Type: application/json" -d '{
+        "batchId": "",
+        "processType": "cutting"
+    }' "http://ip地址/api/process"
+    例如：
+          {
+            "batchId": "24B0256",
+            "processType": "cutting"
+          }  
+    4、记录检验批次操作
+    curl -X POST -H "Content-Type: application/json" -d '{
+        "batchId": "",
+        "processType": "film"
+    }' "http://ip地址/api/process"
+    例如：
+          {
+            "batchId": "24B0256",
+            "processType": "inspection"
+          }  
+    5、记录出货批次操作
+    curl -X POST -H "Content-Type: application/json" -d '{
+        "batchId": "",
+        "processType": "film"
+    }' "http://ip地址/api/process"
+    例如：
+          {
+            "batchId": "24B0256",
+            "processType": "shipping"
+          }
+
+GET请求数据
+    1、请求某个类型的某个批次是否存在
+    curl -X GET -H "Content-Type: application/json" -d '{
+        "batchId": "",
+        "processType": ""
+    }' "http://ip地址/api/process/batch"
+
+    例如：
+          {
+            "batchId": "24B0256",
+            "processType": "storage"
+          }
+    2、按时间范围查询数据
+        curl -X GET -H "Content-Type: application/json" -d '{
+        "processType": "",
+        "startTime": "",
+        "endTime": ""
+    }' "http://ip地址/api/process/"
+
+    例如：
+          {
+            "processType": "storage",
+            "startTime": "2025-03-25 20:30:59",
+            "endTime": "2025-03-26 23:59:59"
+          }
+
+导出数据为Excel
+    1、导出某个类型时间段的数据
+    curl -X GET -H "Content-Type: application/json" -d '{
+        "processType": "",
+        "startTime": "",
+        "endTime": ""
+    }' "http://ip地址/api/process/export"
+
+    例如：
+          {
+            "processType": "shipping",
+            "startTime": "2025-03-25 20:30:59",
+            "endTime": "2025-03-26 23:59:59"
+          }
+    http://192.168.137.136:3000/api/process/export?processType=shipping&startTime=2025-03-25%2020:30:59&endTime=2025-03-27%2023:59:59
+    2、按照时间筛选一次性导出所有流程的数据
+    http://192.168.137.136:3000/api/process/export-all?startTime=2025-03-25%2020:30:59&endTime=2025-03-27%2023:59:59
