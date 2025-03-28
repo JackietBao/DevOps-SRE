@@ -95,3 +95,49 @@ GET请求数据
     http://192.168.137.136:3000/api/process/export?processType=shipping&startTime=2025-03-25%2020:30:59&endTime=2025-03-27%2023:59:59
     2、按照时间筛选一次性导出所有流程的数据
     http://192.168.137.136:3000/api/process/export-all?startTime=2025-03-25%2020:30:59&endTime=2025-03-27%2023:59:59
+
+
+
+
+
+
+
+
+
+
+
+
+
+入库    
+curl -X GET \
+  -H "Content-Type: application/json" \
+  -d '{"processType": "storage", "startTime": "2025-03-25 20:30:59", "endTime": "2025-03-29 23:59:59"}' \
+  http://192.168.137.136:3000/api/process/
+
+贴膜
+curl -X GET \
+  -H "Content-Type: application/json" \
+  -d '{"processType": "film", "startTime": "2025-03-25 20:30:59", "endTime": "2025-03-29 23:59:59"}' \
+  http://192.168.137.136:3000/api/process/
+
+切割
+curl -X GET \
+  -H "Content-Type: application/json" \
+  -d '{"processType": "cutting", "startTime": "2025-03-25 20:30:59", "endTime": "2025-03-29 23:59:59"}' \
+  http://192.168.137.136:3000/api/process/
+
+检验
+curl -X GET \
+  -H "Content-Type: application/json" \
+  -d '{"processType": "inspection", "startTime": "2025-03-25 20:30:59", "endTime": "2025-03-29 23:59:59"}' \
+  http://192.168.137.136:3000/api/process/
+
+出货
+curl -X GET \
+  -H "Content-Type: application/json" \
+  -d '{"processType": "shipping", "startTime": "2025-03-25 20:30:59", "endTime": "2025-03-29 23:59:59"}' \
+  http://192.168.137.136:3000/api/process/
+
+
+所有流程
+http://192.168.137.136:3000/api/process/export-all?startTime=2025-03-25%2020:30:59&endTime=2025-03-27%2023:59:59
