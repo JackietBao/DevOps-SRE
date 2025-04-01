@@ -1,0 +1,106 @@
+这个SQL文件是一个数据库迁移脚本，用于创建应用程序所需的数据库表和索引。以下是每个部分的详细解释：
+
+## 表结构创建
+
+### 1. `Admins` 表
+
+```
+CREATE TABLE "Admins" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "account" TEXT NOT NULL,
+    "passwd" TEXT NOT NULL,
+    "role" TEXT NOT NULL,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+- 用于存储管理员账户信息
+- 包含ID、账号、密码、角色及创建/更新时间
+- ID为自增主键
+
+### 2. `Datas` 表
+
+```
+CREATE TABLE "Datas" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "ip" TEXT NOT NULL,
+    "ua" TEXT NOT NULL,
+    "domain" TEXT NOT NULL,
+    "page" TEXT NOT NULL,
+    "content" TEXT NOT NULL,
+    "cardData" TEXT NOT NULL,
+    "offline" TEXT,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+- 存储用户访问数据
+- 记录IP地址、用户代理(UA)、域名、页面、内容、卡片数据等信息
+- 包含离线状态(可为空)及时间戳
+
+### 3. `Settings` 表
+
+```
+CREATE TABLE "Settings" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "type" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "value" TEXT NOT NULL,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+- 存储应用程序配置项
+- 使用类型(type)和名称(name)来分类设置项
+- 配置值存储在value字段中
+
+### 4. `IPBlacklist` 表
+
+```
+CREATE TABLE "IPBlacklist" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "ip" TEXT NOT NULL,
+    "remark" TEXT NOT NULL,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+- 存储被封禁的IP地址
+- 包含IP地址和备注信息
+
+### 5. `Logs` 表
+
+```
+CREATE TABLE "Logs" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "type" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "info" TEXT NOT NULL,
+    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+- 记录系统日志
+- 按类型(type)分类，包含标题和详细信息
+
+## 索引创建
+
+```
+CREATE UNIQUE INDEX "Admins_account_key" ON "Admins"("account");
+```
+
+- 在管理员表的account字段上创建唯一索引，确保账号不重复
+
+```
+CREATE UNIQUE INDEX "Settings_type_name_key" ON "Settings"("type", "name");
+```
+
+- 在设置表的type和name字段组合上创建唯一索引
+- 确保同一类型下的设置名不会重复
+
+整体看来，这是一个用于管理网站或应用程序的数据库结构，包含了用户数据收集、管理员权限控制、系统配置、IP黑名单和日志记录等功能。
