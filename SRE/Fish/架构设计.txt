@@ -11,6 +11,7 @@ watchtower服务 - 自动更新Docker镜像的服务
 
 
 前端架构
+Ant Design UI框架
 前端服务（web）：
 基于Caddy服务器运行，用于提供网站内容和反向代理
 配置了自动TLS证书获取功能
