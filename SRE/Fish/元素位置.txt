@@ -1,9 +1,104 @@
 位置信息
-(x) 8px：表示该组件左上角在水平方向（x 轴）距离页面左边缘的位置是 8 像素。
-(y) 737px：表示该组件左上角在垂直方向（y 轴）距离页面上边缘的位置是 737 像素。
-(x) 250px：表示该组件右下角在水平方向（x 轴）距离页面左边缘的位置是 250 像素。
-(y) 893px：表示该组件右下角在垂直方向（y 轴）距离页面上边缘的位置是 893 像素。
+(x) 294px：表示该组件左上角在水平方向（x 轴）距离页面左边缘的位置是 294 像素。
+(y) 72px：表示该组件左上角在垂直方向（y 轴）距离页面上边缘的位置是 72 像素。
+(x) 390x：表示该组件右下角在水平方向（x 轴）距离页面左边缘的位置是 390 像素。
+(y) 96px：表示该组件右下角在垂直方向（y 轴）距离页面上边缘的位置是 96 像素。
 
 
 (w)224px
 (h)138px
+
+
+
+
+
+
+
+提问方式：
+使用antd design框架的UI，也就是ant-descriptions-item-container。在位置信息(x) 294px：表示该组件左上角在水平方向（x 轴）距离页面左边缘的位置是 294 像素。
+(y) 72px：表示该组件左上角在垂直方向（y 轴）距离页面上边缘的位置是 72 像素。
+(x) 390x：表示该组件右下角在水平方向（x 轴）距离页面左边缘的位置是 390 像素。
+(y) 96px：表示该组件右下角在垂直方向（y 轴）距离页面上边缘的位置是 96 像素。   增加一个text文本标题：近一天数据量:     参数如下       span .ant-descriptions-item-label {
+	/* Font & Text */
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	letter-spacing: normal;
+	line-height: 22px;
+	text-decoration: none solid rgba(0, 0, 0, 0.45);
+	text-align: start;
+	text-indent: 0px;
+	text-transform: none;
+	vertical-align: baseline;
+	white-space: normal;
+	word-spacing: 0px;
+
+	/* Color & Background */
+	background-attachment: scroll;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	color: rgba(0, 0, 0, 0.45);
+
+	/* Box */
+	height: 22px;
+	width: 97.0417px;
+	border: 0px none rgba(0, 0, 0, 0.45);
+	border-top: 0px none rgba(0, 0, 0, 0.45);
+	border-right: 0px none rgba(0, 0, 0, 0.45);
+	border-bottom: 0px none rgba(0, 0, 0, 0.45);
+	border-left: 0px none rgba(0, 0, 0, 0.45);
+	margin: 0px;
+	padding: 0px;
+	max-height: none;
+	min-height: auto;
+	max-width: none;
+	min-width: auto;
+
+	/* Positioning */
+	position: static;
+	top: auto;
+	bottom: auto;
+	right: auto;
+	left: auto;
+	float: none;
+	display: flex;
+	clear: none;
+	z-index: auto;
+
+	/* List */
+	list-style-image: none;
+	list-style-type: none;
+	list-style-position: outside;
+
+	/* Table */
+	border-collapse: collapse;
+	border-spacing: 2px 2px;
+	caption-side: top;
+	empty-cells: show;
+	table-layout: auto;
+
+	/* Miscellaneous */
+	overflow: visible;
+	cursor: auto;
+	visibility: visible;
+
+	/* Effects */
+	transform: none;
+	transition: all;
+	outline: rgb(255, 0, 0) dashed 0.666667px;
+	outline-offset: 0px;
+	box-sizing: border-box;
+	resize: none;
+	text-shadow: none;
+	text-overflow: clip;
+	word-wrap: normal;
+	box-shadow: none;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
